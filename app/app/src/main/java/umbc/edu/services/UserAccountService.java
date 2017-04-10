@@ -1,91 +1,109 @@
 package umbc.edu.services;
 
 import android.app.IntentService;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserAttributes;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.SignUpHandler;
+
+import java.util.List;
+
+import umbc.edu.app.ConfirmAccountActivity;
+import umbc.edu.app.R;
+import umbc.edu.helpers.AppHelper;
+
+
 public class UserAccountService extends IntentService {
-    // TODO: Rename actions, choose action names that describe tasks that this
-    // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_FOO = "umbc.edu.app.action.FOO";
-    private static final String ACTION_BAZ = "umbc.edu.app.action.BAZ";
 
-    // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "umbc.edu.app.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "umbc.edu.app.extra.PARAM2";
+    String username;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 
     public UserAccountService() {
         super("UserAccountService");
     }
 
-    /**
-     * Starts this service to perform action Foo with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionFoo(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, UserAccountService.class);
-        intent.setAction(ACTION_FOO);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
-    }
-
-    /**
-     * Starts this service to perform action Baz with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionBaz(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, UserAccountService.class);
-        intent.setAction(ACTION_BAZ);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
-    }
-
     @Override
     protected void onHandleIntent(Intent intent) {
-        if (intent != null) {
-            final String action = intent.getAction();
-            if (ACTION_FOO.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionFoo(param1, param2);
-            } else if (ACTION_BAZ.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionBaz(param1, param2);
-            }
+        String action = intent.getStringExtra("action");
+        switch (action){
+            case "register":
+                AppHelper.init(getApplicationContext());
+                username = intent.getStringExtra("username");
+                register(username, intent.getStringExtra("email"), intent.getStringExtra("password"));
+                break;
+            case "login":
+                break;
         }
     }
 
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionFoo(String param1, String param2) {
-        // TODO: Handle action Foo
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void register (String username, String email, String password){
+        // Create a CognitoUserAttributes object and add user attributes
+        CognitoUserAttributes userAttributes = new CognitoUserAttributes();
+
+        // Add the user attributes. Attributes are added as key-value pairs
+        userAttributes.addAttribute("preferred_username", username);
+
+        // Adding user's contact info
+        userAttributes.addAttribute("email", email);
+
+        AppHelper.getPool().signUpInBackground(username,password,userAttributes,null,signupCallback);
+
     }
 
-    /**
-     * Handle action Baz in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionBaz(String param1, String param2) {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
+    SignUpHandler signupCallback = new SignUpHandler() {
+
+        @Override
+        public void onSuccess(CognitoUser cognitoUser, boolean userConfirmed, CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
+            // Sign-up was successful
+
+            // Check if this user (cognitoUser) needs to be confirmed
+            if(!userConfirmed) {
+                // This user must be confirmed and a confirmation code was sent to the user
+                // cognitoUserCodeDeliveryDetails will indicate where the confirmation code was sent
+                // Get the confirmation code from user
+
+                //Start an Activity to allow the user to enter the verification code sent to their email
+                Intent intent = new Intent();
+                intent.putExtra("username", username);
+                intent.putExtra("destination", cognitoUserCodeDeliveryDetails.getDestination());
+                intent.putExtra("deliveryMed", cognitoUserCodeDeliveryDetails.getDeliveryMedium());
+                intent.putExtra("attribute", cognitoUserCodeDeliveryDetails.getAttributeName());
+                intent.setAction(AppHelper.USER_NOT_CONFIRMED);
+                getBaseContext().sendBroadcast(intent);
+            }
+            else {
+                // The user has already been confirmed
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.putExtra(AppHelper.USER_CONFIRMED,"confirmed");
+                broadcastIntent.setAction(AppHelper.USER_CONFIRMED);
+                getBaseContext().sendBroadcast(broadcastIntent);
+            }
+        }
+
+        @Override
+        public void onFailure(Exception exception) {
+            // Sign-up failed, check exception for the cause
+            Log.d("Error","In UserAccountService -> onFailure(): "+exception.getLocalizedMessage());
+
+            //Send the error message back to the CreateAccountActivity to display to user
+            Intent broadcastIntent = new Intent();
+            broadcastIntent.putExtra(AppHelper.SIGN_UP_FAILED,exception.getLocalizedMessage());
+            broadcastIntent.setAction(AppHelper.SIGN_UP_FAILED);
+            getBaseContext().sendBroadcast(broadcastIntent);
+        }
+    };
 }

@@ -8,10 +8,66 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="umbc.edu.app.MainActivity">
+    tools:context="umbc.edu.app.MainActivity"
+    android:background="@color/purple_dark">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:hint="Username"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="?attr/colorPrimary"
+        android:textCursorDrawable="@color/purple_pale" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginTop="34dp"
+        android:hint="Password"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="?attr/colorPrimary"
+        style="@style/AppTheme" />
+
+    <TextView
+        android:text="New to Watcha?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp"
+        android:id="@+id/textView3"
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:text="Create an Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/button"
+        android:background="@color/purple_dark"
+        android:textColor="@color/gold"
+        style="?android:borderlessButtonStyle"/>
+
+    <Button
+        android:text="Sign in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:id="@+id/button2"
+        android:background="@color/gold" />
 </RelativeLayout>
