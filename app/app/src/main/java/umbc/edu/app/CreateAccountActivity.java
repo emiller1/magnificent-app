@@ -137,8 +137,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     confirmIntent.putExtra("destination", extras.getString("destination"));
                     confirmIntent.putExtra("deliveryMed", extras.getString("deliveryMed"));
                     confirmIntent.putExtra("attribute", extras.getString("attribute"));
-                    Toast.makeText(getBaseContext(), "ConfirmAccountActivity not booting", Toast.LENGTH_LONG).show();
-                    //startActivity(confirmIntent);
+                    startActivity(confirmIntent);
                     break;
             }
         }

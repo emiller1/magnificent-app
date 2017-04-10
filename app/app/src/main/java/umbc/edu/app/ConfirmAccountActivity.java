@@ -25,6 +25,7 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     TextView confimration_message;
     Button confirm_button;
     EditText code;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,7 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()){
             case R.id.confirm_button:
                 String code_ = code.getText().toString();
@@ -75,30 +77,35 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
                     Log.d("confirm_button","***WHAT***");
                 }
                 break;
-            //case R.id.resend_button: //TODO ADD BUTTON TO RSEND CONFIRMATION CODE
+            //case R.id.resend_button: //TODO ADD BUTTON TO RESEND CONFIRMATION CODE
                 //AppHelper.getPool().getUser(username).resendConfirmationCodeInBackground(resendConfCodeHandler);
                 //break;
         }
+
     }
 
     GenericHandler confHandler = new GenericHandler() {
         @Override
         public void onSuccess() {
             //TODO Display to the user that the confirmation was successful.
+
             Log.d("onSuccess","***Success***");
             Intent intent = new Intent(ConfirmAccountActivity.this, MainActivity.class);
             intent.putExtra("success",AppHelper.USER_CONFIRMED);
             startActivity(intent);
+
         }
 
         @Override
         public void onFailure(Exception exception) {
             //TODO Display a failure message to the user
             //TODO For now I just Toast
+
             Log.d("ERROR","***FAILURE***"+exception.getLocalizedMessage());
             Toast.makeText(ConfirmAccountActivity.this, "Error: " + exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             Toast.makeText(ConfirmAccountActivity.this, "Try Resending The Code", Toast.LENGTH_LONG).show();
             //TODO display buttion to resend code
+
 
         }
     };
