@@ -141,6 +141,12 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         @Override
         public void onFailure(Exception e) {
             Toast.makeText(MainActivity.this, "Failed" + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+
+            //TODO: IF Message is not confirmed then launch the confirm account activity
+            Intent intent = new Intent(MainActivity.this, ConfirmAccountActivity.class);
+            intent.putExtra("username",user);
+            intent.putExtra("deliveryMed", "email");
+            startActivity(intent);
         }
     };
 }

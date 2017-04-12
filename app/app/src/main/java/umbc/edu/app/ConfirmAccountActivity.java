@@ -23,8 +23,9 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
 
     String username, destination, deliveryMed;
     TextView confimration_message;
-    Button confirm_button;
+    Button confirm_button, resend_button;
     EditText code;
+    VerificationHandler resendConfCodeHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,33 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
         confirm_button = (Button)findViewById(R.id.confirm_button);
         confirm_button.setOnClickListener(this);
         code = (EditText) findViewById(R.id.editText_code);
+        resend_button = (Button)findViewById(R.id.resend_button);
+        resend_button.setOnClickListener(this);
         // AppHelper.getPool().getUser(userName).resendConfirmationCodeInBackground(resendConfCodeHandler);
+
+        resendConfCodeHandler = new VerificationHandler() {
+            @Override
+            public void onSuccess(CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
+
+            }
+
+            @Override
+            public void onFailure(Exception exception) {
+
+            }
+        };
+
+        VerificationHandler resendConfCodeHandler = new VerificationHandler() {
+            @Override
+            public void onSuccess(CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
+                //TODO
+            }
+
+            @Override
+            public void onFailure(Exception exception) {
+                //TODO
+            }
+        };
 
     }
 
@@ -52,7 +79,12 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     @Override
     protected void onResume() {
         super.onResume();
-        confimration_message.setText("A confirmation code was sent to "+destination+" via "+deliveryMed);
+        if(destination != null && deliveryMed != null){
+            confimration_message.setText("A confirmation code was sent to "+destination+" via "+deliveryMed);
+        }else{
+            confimration_message.setText("Please Enter Your Verification Code");
+        }
+
     }
 
     @Override
@@ -64,6 +96,7 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     protected void onDestroy() {
         super.onDestroy();
     }
+
 
     @Override
     public void onClick(View v) {
@@ -77,9 +110,12 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
                     Log.d("confirm_button","***WHAT***");
                 }
                 break;
-            //case R.id.resend_button: //TODO ADD BUTTON TO RESEND CONFIRMATION CODE
-                //AppHelper.getPool().getUser(username).resendConfirmationCodeInBackground(resendConfCodeHandler);
-                //break;
+            case R.id.resend_button:
+                if(username!=null){
+                    AppHelper.getPool().getUser(username).resendConfirmationCodeInBackground(resendConfCodeHandler);
+                }
+
+                break;
         }
 
     }
@@ -106,18 +142,6 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
             Toast.makeText(ConfirmAccountActivity.this, "Try Resending The Code", Toast.LENGTH_LONG).show();
             //TODO display buttion to resend code
 
-
-        }
-    };
-
-    VerificationHandler resendConfCodeHandler = new VerificationHandler() {
-        @Override
-        public void onSuccess(CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
-
-        }
-
-        @Override
-        public void onFailure(Exception exception) {
 
         }
     };

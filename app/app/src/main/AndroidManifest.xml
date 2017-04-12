@@ -34,7 +34,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".UserShowsActivity" />
         <activity android:name=".ShowDetailsActivity" />
-        <activity android:name=".ConfirmAccountActivity"></activity>
+        <activity android:name=".ConfirmAccountActivity" />
     </application>
 
 </manifest>

@@ -11,28 +11,6 @@
     tools:context="umbc.edu.app.ConfirmAccountActivity"
     android:background="@color/purple_dark">
 
-    <TextView
-        android:text="Confirmation Message"
-        android:textSize="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:id="@+id/confirm_message"
-        android:textColor="@color/gold" />
-
-    <TextView
-        android:text="Enter Verification Code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/confirm_message"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:id="@+id/textView5"
-        tools:text="fication Code"
-        android:textColor="@color/colorPrimary" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,15 +24,74 @@
         android:textColorHint="@color/colorPrimary"
         android:textColor="?attr/colorPrimary" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:id="@+id/editText6"
+        android:hint="Verification Code"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="?attr/colorPrimary" />
+
+    <TextView
+        android:text="Confirmation Message"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:id="@+id/confirm_message"
+        android:textColor="@color/gold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:text="Confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_code"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="36dp"
         android:id="@+id/confirm_button"
         android:elevation="0dp"
-        android:background="@color/gold" />
+        android:background="@color/gold"
+        android:layout_below="@+id/editText_code"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5" />
+
+    <TextView
+        android:text="Enter Verification Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:id="@+id/textView5"
+        tools:text="fication Code"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/confirm_message"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resend_button"
+        android:elevation="0dp"
+        android:background="@color/gold"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignLeft="@+id/confirm_button"
+        android:layout_alignStart="@+id/confirm_button" />
+
+    <TextView
+        android:text="Resend Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textColor="@color/gold"
+        android:textSize="20dp"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/confirm_button"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
