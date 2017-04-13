@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoDevice;
@@ -19,7 +20,6 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.Mult
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.AuthenticationHandler;
 
 import umbc.edu.helpers.AppHelper;
-import umbc.edu.services.UserAccountService;
 
 /**
  * @author Elishiah Miller, Katelyn Seitz
@@ -39,7 +39,8 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     String user, pass;
 
     EditText username, password;
-    Button loginButton, createButton;
+    Button loginButton;
+    TextView createButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         username = (EditText) findViewById(R.id.editText);
         password = (EditText) findViewById(R.id.editText2);
         loginButton = (Button) findViewById(R.id.button2);
-        createButton = (Button) findViewById(R.id.button);
+        createButton = (TextView) findViewById(R.id.button);
 
         loginButton.setOnClickListener(this);
         createButton.setOnClickListener(this);
@@ -140,7 +141,8 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
         @Override
         public void onFailure(Exception e) {
-            Toast.makeText(MainActivity.this, "Failed" + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            AlertDialogFragment fragment = new AlertDialogFragment().newInstance(user);
+            fragment.show(getSupportFragmentManager(), e.getLocalizedMessage());
         }
     };
 }

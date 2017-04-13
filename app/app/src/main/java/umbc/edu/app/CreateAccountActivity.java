@@ -43,7 +43,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         email = (EditText) findViewById(R.id.editText4);
         password = (EditText) findViewById(R.id.editText5);
         register = (Button) findViewById(R.id.button3);
-        register.setOnClickListener(this);    //TODO: this is wrong
+        register.setOnClickListener(this);
 
         // Allows user to carry over attempted login credentials for use in account registration
         Intent createIntent = getIntent();
@@ -116,10 +116,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            AlertDialogFragment fragment = new AlertDialogFragment();
             switch (action) {
                 case AppHelper.SIGN_UP_FAILED:
                     //TODO: Show exception handler in dialog box in easy to read format rather than toasting error message
-                    Toast.makeText(getBaseContext(), intent.getStringExtra(AppHelper.SIGN_UP_FAILED), Toast.LENGTH_LONG).show();
+                    fragment.show(getSupportFragmentManager(), intent.getStringExtra(AppHelper.SIGN_UP_FAILED));
 
                     accountIntent.removeExtra("username");
                     accountIntent.removeExtra("password");
@@ -128,8 +129,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     stopService(accountIntent);
                     break;
                 case AppHelper.USER_CONFIRMED:
-                    //TODO: use dialog box instead of toast message
-                    Toast.makeText(getBaseContext(), "This user already exists", Toast.LENGTH_LONG).show();
+                    //TODO: Dialog
+                    fragment.show(getSupportFragmentManager(), "User already exists");
                     break;
                 case AppHelper.USER_NOT_CONFIRMED:
                     Bundle extras = intent.getExtras();

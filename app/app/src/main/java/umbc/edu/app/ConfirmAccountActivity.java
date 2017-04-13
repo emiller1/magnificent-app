@@ -22,7 +22,7 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     //https://github.com/awslabs/aws-sdk-android-samples/blob/8957e9402cf7490bfa9c3939eabc92f1b7d4572e/AmazonCognitoYourUserPoolsDemo/app/src/main/java/com/amazonaws/youruserpools/RegisterUser.java
 
     String username, destination, deliveryMed;
-    TextView confimration_message;
+    TextView confimration_message, resend;
     Button confirm_button;
     EditText code;
 
@@ -40,6 +40,8 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
         confirm_button = (Button)findViewById(R.id.confirm_button);
         confirm_button.setOnClickListener(this);
         code = (EditText) findViewById(R.id.editText_code);
+        resend = (TextView) findViewById(R.id.resend);
+        resend.setOnClickListener(this);
         // AppHelper.getPool().getUser(userName).resendConfirmationCodeInBackground(resendConfCodeHandler);
 
     }
@@ -52,7 +54,13 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     @Override
     protected void onResume() {
         super.onResume();
-        confimration_message.setText("A confirmation code was sent to "+destination+" via "+deliveryMed);
+        if (destination != null && deliveryMed != null) {
+            confimration_message.setText("A confirmation code was sent to " + destination + " via " + deliveryMed);
+        }
+        else{
+            String msg = "Please Enter Your Verification Code";
+            confimration_message.setText(msg);
+        }
     }
 
     @Override
@@ -77,9 +85,9 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
                     Log.d("confirm_button","***WHAT***");
                 }
                 break;
-            //case R.id.resend_button: //TODO ADD BUTTON TO RESEND CONFIRMATION CODE
-                //AppHelper.getPool().getUser(username).resendConfirmationCodeInBackground(resendConfCodeHandler);
-                //break;
+            case R.id.resend:
+                AppHelper.getPool().getUser(username).resendConfirmationCodeInBackground(resendConfCodeHandler);
+                break;
         }
 
     }
@@ -87,26 +95,18 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     GenericHandler confHandler = new GenericHandler() {
         @Override
         public void onSuccess() {
-            //TODO Display to the user that the confirmation was successful.
+            AlertDialogFragment fragment = new AlertDialogFragment();
+            fragment.show(getSupportFragmentManager(), "ConfirmAccountActivity Success");
 
             Log.d("onSuccess","***Success***");
-            Intent intent = new Intent(ConfirmAccountActivity.this, MainActivity.class);
-            intent.putExtra("success",AppHelper.USER_CONFIRMED);
-            startActivity(intent);
-
         }
 
         @Override
         public void onFailure(Exception exception) {
-            //TODO Display a failure message to the user
-            //TODO For now I just Toast
+            AlertDialogFragment fragment = new AlertDialogFragment();
+            fragment.show(getSupportFragmentManager(), "ConfirmAccountActivity Failure");
 
             Log.d("ERROR","***FAILURE***"+exception.getLocalizedMessage());
-            Toast.makeText(ConfirmAccountActivity.this, "Error: " + exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-            Toast.makeText(ConfirmAccountActivity.this, "Try Resending The Code", Toast.LENGTH_LONG).show();
-            //TODO display buttion to resend code
-
-
         }
     };
 

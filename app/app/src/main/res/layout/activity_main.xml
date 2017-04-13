@@ -50,18 +50,6 @@
         android:textColor="@color/colorPrimary" />
 
     <Button
-        android:text="Create an Account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/button"
-        android:background="@color/purple_dark"
-        android:textColor="@color/gold"
-        style="?android:borderlessButtonStyle"/>
-
-    <Button
         android:text="Sign in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,5 +57,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:id="@+id/button2"
-        android:background="@color/gold" />
+        android:backgroundTint="@color/gold" />
+
+    <TextView
+        android:text="Create Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:id="@+id/button"
+        android:textColor="@color/gold"
+        android:clickable="true"
+        android:textSize="18sp" />
 </RelativeLayout>

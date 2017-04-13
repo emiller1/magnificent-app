@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#dadada</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#bc9cf2</color>
     <color name="purple_dark">#421763</color>
     <color name="yellow_pale">#ffffaa</color>
     <color name="gold">#fcd875</color>

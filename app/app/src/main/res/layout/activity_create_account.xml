@@ -74,7 +74,7 @@
         android:id="@+id/button3"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView"
-        android:background="@color/gold" />
+        android:backgroundTint="@color/gold" />
 
     <EditText
         android:layout_width="wrap_content"

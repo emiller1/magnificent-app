@@ -1,26 +1,14 @@
 package umbc.edu.services;
 
 import android.app.IntentService;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.Context;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.amazonaws.ClientConfiguration;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserAttributes;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.SignUpHandler;
 
-import java.util.List;
-
-import umbc.edu.app.ConfirmAccountActivity;
-import umbc.edu.app.R;
 import umbc.edu.helpers.AppHelper;
 
 

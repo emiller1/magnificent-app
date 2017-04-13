@@ -56,5 +56,29 @@
         android:layout_marginTop="34dp"
         android:id="@+id/confirm_button"
         android:elevation="0dp"
-        android:background="@color/gold" />
+        android:background="@android:drawable/btn_default"
+        android:textColorLink="@color/colorAccent"
+        android:backgroundTint="@color/gold" />
+
+    <TextView
+        android:text="Didn't work?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirm_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:id="@+id/textView4"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:text="Resend Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:id="@+id/resend"
+        android:textColor="@color/gold"
+        android:clickable="true"
+        android:textSize="18sp" />
 </RelativeLayout>
