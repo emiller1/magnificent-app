@@ -1,8 +1,15 @@
 package umbc.edu.app;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import umbc.edu.services.GuideBoxService;
 
 /**
  * @author elishiah miller
@@ -15,14 +22,32 @@ import android.util.Log;
 public class HomeActivity extends AppCompatActivity {
 
     protected String tag = "HomeActivity";
-
+    GuideBoxService myservice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.w(tag, "onCreate()");
         setContentView(R.layout.activity_home);
+        Intent guideboxIntent = new Intent(this,GuideBoxService.class);
+        bindService(guideboxIntent,mConnection, Context.BIND_AUTO_CREATE);
+        Log.d("hi1","befor service call");
+
     }
 
+    ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            GuideBoxService.LocalBinder binder = (GuideBoxService.LocalBinder) service;
+            Log.d("hi","in mConnection");
+            myservice = binder.getService();
+            myservice.browseGuideboxService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
     @Override
     protected void onPause() {
         super.onPause();
