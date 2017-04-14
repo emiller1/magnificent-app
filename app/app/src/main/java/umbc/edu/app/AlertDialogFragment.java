@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import umbc.edu.helpers.AppHelper;
+import umbc.edu.services.UserAccountService;
 
 /**
  * Created by Katelyn Seitz on 4/12/2017.
@@ -104,9 +105,9 @@ public class AlertDialogFragment extends DialogFragment{
             builder.setTitle("Invalid Email");
             builder.setMessage("Use format\nemail@example.com");
         }
-        else if (getTag().contains("Value at \'password\' failed to satisfy constraint: Member must have length greater than or equal to 6")) {
+        else if (getTag().contains("Value at \'password\' failed to satisfy constraint: Member must have length greater than or equal to 6") || getTag().contains("Password not long enough")) {
             builder.setTitle("Invalid Password");
-            builder.setMessage("Password must contain at least 6 characters");
+            builder.setMessage("Password must contain at least 8 characters");
         }
         else if (getTag().contains("Password must have lowercase characters")) {
             builder.setTitle("Invalid Password");
@@ -131,6 +132,31 @@ public class AlertDialogFragment extends DialogFragment{
         else if (getTag().contains("User already exists")) {
             builder.setTitle("Invalid Username");
             builder.setMessage("Username already exists. Try a different one");
+        }
+        else if(getTag().contentEquals("Forgot username")) {
+            builder.setTitle("Forgot Username");
+            builder.setMessage("Please enter your email address to receive a reminder");
+
+            //set EditText for email in dialog
+            final EditText input = new EditText(getActivity());
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            input.setLayoutParams(lp);
+            builder.setView(input);
+
+            builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //TODO: alter text to trigger email
+                    dialog.dismiss();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
         }
         else {
             builder.setTitle("Unclassified Error");

@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="umbc.edu.app.ConfirmAccountActivity"
-    android:background="@color/purple_dark">
+    android:background="@color/purpleBackground">
 
     <TextView
         android:text="Confirmation Message"
@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:id="@+id/confirm_message"
-        android:textColor="@color/gold" />
+        android:textColor="@color/goldText" />
 
     <TextView
         android:text="Enter Verification Code"
@@ -31,7 +31,7 @@
         android:layout_marginTop="90dp"
         android:id="@+id/textView5"
         tools:text="fication Code"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/whiteText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,8 +43,10 @@
         android:layout_marginTop="28dp"
         android:id="@+id/editText_code"
         android:hint="Verification Code"
-        android:textColorHint="@color/colorPrimary"
-        android:textColor="?attr/colorPrimary" />
+        android:textColorHint="@color/whiteText"
+        android:textColor="@color/whiteText"
+        android:textColorLink="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent" />
 
     <Button
         android:text="Confirm"
@@ -58,7 +60,7 @@
         android:elevation="0dp"
         android:background="@android:drawable/btn_default"
         android:textColorLink="@color/colorAccent"
-        android:backgroundTint="@color/gold" />
+        android:backgroundTint="@color/goldObject" />
 
     <TextView
         android:text="Didn't work?"
@@ -68,7 +70,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp"
         android:id="@+id/textView4"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/whiteText" />
 
     <TextView
         android:text="Resend Code"
@@ -78,7 +80,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:id="@+id/resend"
-        android:textColor="@color/gold"
+        android:textColor="@color/goldText"
         android:clickable="true"
         android:textSize="18sp" />
 </RelativeLayout>

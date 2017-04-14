@@ -39,8 +39,8 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     String user, pass;
 
     EditText username, password;
-    Button loginButton;
-    TextView createButton;
+    Button loginButton, facebook;
+    TextView createButton, forgotUsername, forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,15 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         password = (EditText) findViewById(R.id.editText2);
         loginButton = (Button) findViewById(R.id.button2);
         createButton = (TextView) findViewById(R.id.button);
+        forgotUsername = (TextView) findViewById(R.id.textView7);
+        forgotPassword = (TextView) findViewById(R.id.textView8);
+        facebook = (Button) findViewById(R.id.button4);
 
         loginButton.setOnClickListener(this);
         createButton.setOnClickListener(this);
+        forgotUsername.setOnClickListener(this);
+        forgotPassword.setOnClickListener(this);
+        facebook.setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +97,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         user = username.getText().toString();
         pass = password.getText().toString();
+        AlertDialogFragment fragment = new AlertDialogFragment();
         switch(v.getId()){
             case R.id.button:       // When createButton is clicked
                 Intent createAccountIntent = new Intent(this, CreateAccountActivity.class);
@@ -104,6 +111,19 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
                     AppHelper.getPool().getUser(user).getSessionInBackground(authenticationHandler);
                 }
                 break;
+            case R.id.textView7:
+                //TODO: implement for forgotUsername
+                fragment.show(getSupportFragmentManager(), "Forgot username");
+                break;
+            case R.id.textView8:
+                //TODO: implement for forgotPassword
+                fragment.show(getSupportFragmentManager(), "Forgot password");
+                break;
+            case R.id.button4:
+                //TODO: implement for facebook
+                fragment.show(getSupportFragmentManager(), "Login with Facebook");
+                break;
+
         }
     }
     AuthenticationHandler authenticationHandler = new AuthenticationHandler() {

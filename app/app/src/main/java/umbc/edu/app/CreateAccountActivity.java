@@ -119,7 +119,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             AlertDialogFragment fragment = new AlertDialogFragment();
             switch (action) {
                 case AppHelper.SIGN_UP_FAILED:
-                    //TODO: Show exception handler in dialog box in easy to read format rather than toasting error message
                     fragment.show(getSupportFragmentManager(), intent.getStringExtra(AppHelper.SIGN_UP_FAILED));
 
                     accountIntent.removeExtra("username");
@@ -129,8 +128,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     stopService(accountIntent);
                     break;
                 case AppHelper.USER_CONFIRMED:
-                    //TODO: Dialog
+                    accountIntent.removeExtra("username");
+                    accountIntent.removeExtra("password");
+                    accountIntent.removeExtra("email");
+                    accountIntent.removeExtra("action");
+                    stopService(accountIntent);
+
                     fragment.show(getSupportFragmentManager(), "User already exists");
+
                     break;
                 case AppHelper.USER_NOT_CONFIRMED:
                     Bundle extras = intent.getExtras();

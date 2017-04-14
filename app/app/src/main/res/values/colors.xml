@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#dadada</color>
-    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorPrimary">#1d0b33</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#a07afd</color>
     <color name="purple_dark">#421763</color>
     <color name="yellow_pale">#ffffaa</color>
     <color name="gold">#fcd875</color>
     <color name="purple_pale">#bc9cf2</color>
-    <color name="colorActionBar">#1d0b33</color>
-    <color name="colorTextGold">#ffbd6f</color>
-    <color name="colorObjectsPurple">#45315d</color>
-    <color name="colorObjectsGold">#ff9f2e</color>
-    <color name="colorBackground">#2f194a</color>
+    <color name="purpleBackground">#2f194a</color>
+    <color name="goldObject">#ff9f2e</color>
+    <color name="goldText">#ffbd6f</color>
+    <color name="whiteText">#dadada</color>
 </resources>

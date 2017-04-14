@@ -10,9 +10,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Watcha"
         android:supportsRtl="true"
-        android:theme="@style/WatchaTheme">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <item android:label="Login"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
