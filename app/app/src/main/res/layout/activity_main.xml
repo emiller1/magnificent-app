@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="umbc.edu.app.MainActivity"
-    android:background="@color/purple_dark">
+    android:background="@color/colorBackground">
 
     <EditText
         android:layout_width="wrap_content"
@@ -21,8 +21,9 @@
         android:layout_marginTop="120dp"
         android:hint="Username"
         android:textColorHint="@color/colorPrimary"
-        android:textColor="?attr/colorPrimary"
-        android:textCursorDrawable="@color/purple_pale" />
+        android:textColor="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorAccent"
+        android:textColorLink="@color/colorAccent" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -37,7 +38,8 @@
         android:hint="Password"
         android:textColorHint="@color/colorPrimary"
         android:textColor="?attr/colorPrimary"
-        style="@style/AppTheme" />
+        style="@style/AppTheme"
+        android:textCursorDrawable="@color/colorAccent" />
 
     <TextView
         android:text="New to Watcha?"
@@ -57,7 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:id="@+id/button2"
-        android:backgroundTint="@color/gold" />
+        android:backgroundTint="@color/colorObjectsGold" />
 
     <TextView
         android:text="Create Account"
@@ -67,7 +69,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:id="@+id/button"
-        android:textColor="@color/gold"
+        android:textColor="@color/colorTextGold"
         android:clickable="true"
         android:textSize="18sp" />
 </RelativeLayout>

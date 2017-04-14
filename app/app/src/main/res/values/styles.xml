@@ -6,6 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorActionBar">@color/colorActionBar</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="@android:style/Widget.ActionBar">
+        <item name="android:background">@color/colorActionBar</item>
+        </style>
+
+    <style name="WatchaTheme" parent="AppTheme" >
+        <item name="colorPrimaryDark">@android:color/background_dark</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorPrimary">@color/colorActionBar</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">?attr/colorPrimaryDark</item>
+        <item name="android:textColorSecondaryInverse">@color/colorObjectsGold</item>
     </style>
 
 </resources>
