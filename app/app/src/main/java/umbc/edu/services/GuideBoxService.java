@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,40 +30,78 @@ public class GuideBoxService extends Service {
     // Binder given to clients
     private final IBinder mBinder = new LocalBinder();
     long browse_total_results, browse_total_returned;
+    Result search_Result;
     public void browseGuideboxService() {
-        new guideboxAsyncTask().execute("browse");
+        String[] input = new String[1];
+        new guideboxAsyncTask().execute(input);
 
     }
-    public void searchGuideboxService(){
-
+    public Result searchGuideboxService(String _type, String term){
+        String[] input = new String[3];
+        input[0] = "search";
+        input[1] = _type; // Elsie can send _type = "id" and Bharadwaz can send _type = "name"
+        input[2] = term; // if _type = "id" term = value of id and if _type = "name" term = show name
+        new guideboxAsyncTask().execute(input);
+        return search_Result;
     }
 
     private class guideboxAsyncTask extends AsyncTask<String,Void,String>{
 
         @Override
         protected String doInBackground(String... params) {
-            URL url;
-            HttpURLConnection urlConnection = null;
-            List<Result> final_Result = new ArrayList<Result>();
-            try{
-                url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
-                urlConnection = (HttpURLConnection)url.openConnection();
-                Log.d("jsonData","hi");
-                InputStream in = urlConnection.getInputStream();
-                Log.d("in async task","no");
-                final_Result = readJsonStream(in);
-                Log.d("finalresult count", String.valueOf(final_Result.size()));
-                Log.d("total results", String.valueOf(browse_total_results));
-                Log.d("total returned", String.valueOf(browse_total_returned));
-                for (int i =0; i< final_Result.size();i++){
-                    Log.d("Title",String.valueOf(i+1)+ final_Result.get(i).title);
+            if (params[0] == "browse") {
+                URL url;
+                HttpURLConnection urlConnection = null;
+                List<Result> final_Result = new ArrayList<Result>();
+                try {
+                    url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    Log.d("jsonData", "hi");
+                    InputStream in = urlConnection.getInputStream();
+                    Log.d("in async task", "no");
+                    final_Result = readJsonStream(in);
+                    Log.d("finalresult count", String.valueOf(final_Result.size()));
+                    Log.d("total results", String.valueOf(browse_total_results));
+                    Log.d("total returned", String.valueOf(browse_total_returned));
+                    for (int i = 0; i < final_Result.size(); i++) {
+                        Log.d("Title", String.valueOf(i + 1) + final_Result.get(i).title);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    urlConnection.disconnect();
                 }
-            }catch (Exception e){
-                e.printStackTrace();
-            }finally {
-                urlConnection.disconnect();
             }
+            else if(params[0] == "search"){
+                URL url = null;
+                HttpURLConnection urlConnection = null;
 
+                if(params[1] == "id"){
+                    try {
+                        url = new URL(""); //intialize url using params[2]
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                }else if(params[1] == "name"){
+                    try {
+                        url = new URL("http://api-public.guidebox.com/v2/search?api_key=YOUR_API_KEY&type=movie&field=title&query=Terminator");
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                try {
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = urlConnection.getInputStream();
+                    JsonReader search_reader = new JsonReader(new InputStreamReader(in));
+                    search_Result = readResult(search_reader);
+                        Log.d("Title", search_Result.title);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    urlConnection.disconnect();
+                }
+
+            }
             return null;
         }
     }
@@ -84,6 +123,7 @@ public class GuideBoxService extends Service {
             this.id = id;
             this.title = title;
         }
+        public Result(){}
     }
     public List<Result> readJsonStream(InputStream in) throws IOException {
         Log.d("in readJsonStream","hi");
