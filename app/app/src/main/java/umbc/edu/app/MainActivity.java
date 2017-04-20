@@ -37,7 +37,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
     EditText username, password;
     Button login_button, facebook_button;
-    TextView createAccount_button, forgotUsername, forgotPassword;
+    TextView createAccount_button, forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +57,11 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
         //Create TextViews
         createAccount_button = (TextView) findViewById(R.id.createAccount_button);
-        forgotUsername = (TextView) findViewById(R.id.textView7);
         forgotPassword = (TextView) findViewById(R.id.forgotPassword_textView);
 
         //Set onClick listeners
         login_button.setOnClickListener(this);
         createAccount_button.setOnClickListener(this);
-        forgotUsername.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
         facebook_button.setOnClickListener(this);
     }
@@ -115,10 +113,6 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
                     AppHelper.init(getApplicationContext());
                     AppHelper.getPool().getUser(user).getSessionInBackground(authenticationHandler);
                 }
-                break;
-            case R.id.textView7:
-                //TODO: implement for forgotUsername
-                fragment.show(getSupportFragmentManager(), "Forgot username");
                 break;
             case R.id.forgotPassword_textView:
                 //fragment.show(getSupportFragmentManager(), "Forgot password");
