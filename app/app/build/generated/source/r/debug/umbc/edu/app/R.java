@@ -1813,10 +1813,6 @@ containing a value of this type.
         public static final int always=0x7f0b001d;
         public static final int beginning=0x7f0b001a;
         public static final int bottom=0x7f0b0022;
-        public static final int button=0x7f0b0067;
-        public static final int button2=0x7f0b0066;
-        public static final int button3=0x7f0b0061;
-        public static final int button4=0x7f0b0069;
         public static final int buttonPanel=0x7f0b002e;
         public static final int cancel_action=0x7f0b0070;
         public static final int checkbox=0x7f0b003c;
@@ -1825,22 +1821,20 @@ containing a value of this type.
         public static final int confirm_button=0x7f0b0058;
         public static final int confirm_message=0x7f0b0055;
         public static final int contentPanel=0x7f0b0034;
+        public static final int createAccount_button=0x7f0b0067;
         public static final int custom=0x7f0b003a;
         public static final int customPanel=0x7f0b0039;
         public static final int decor_content_parent=0x7f0b0043;
         public static final int default_activity_button=0x7f0b002a;
         public static final int disableHome=0x7f0b000c;
-        public static final int editText=0x7f0b0064;
-        public static final int editText2=0x7f0b0065;
-        public static final int editText3=0x7f0b005e;
-        public static final int editText4=0x7f0b005f;
-        public static final int editText5=0x7f0b0060;
         public static final int editText_code=0x7f0b0057;
         public static final int edit_query=0x7f0b0047;
+        public static final int email_editText=0x7f0b005f;
         public static final int end=0x7f0b001b;
         public static final int end_padder=0x7f0b007b;
         public static final int expand_activities_button=0x7f0b0028;
         public static final int expanded_menu=0x7f0b003b;
+        public static final int facebook_button=0x7f0b0069;
         public static final int home=0x7f0b0004;
         public static final int homeAsUp=0x7f0b000d;
         public static final int icon=0x7f0b002c;
@@ -1858,9 +1852,12 @@ containing a value of this type.
         public static final int none=0x7f0b000e;
         public static final int normal=0x7f0b000a;
         public static final int parentPanel=0x7f0b0030;
+        public static final int password2_editText=0x7f0b0060;
+        public static final int password_editText=0x7f0b0065;
         public static final int progress_circular=0x7f0b0005;
         public static final int progress_horizontal=0x7f0b0006;
         public static final int radio=0x7f0b003e;
+        public static final int register_button=0x7f0b0061;
         public static final int resend=0x7f0b005a;
         public static final int screen=0x7f0b0015;
         public static final int scrollIndicatorDown=0x7f0b0038;
@@ -1881,6 +1878,7 @@ containing a value of this type.
         public static final int showCustom=0x7f0b000f;
         public static final int showHome=0x7f0b0010;
         public static final int showTitle=0x7f0b0011;
+        public static final int signIn_button=0x7f0b0066;
         public static final int spacer=0x7f0b002f;
         public static final int split_action_bar=0x7f0b0007;
         public static final int src_atop=0x7f0b0016;
@@ -1908,6 +1906,8 @@ containing a value of this type.
         public static final int topPanel=0x7f0b0031;
         public static final int up=0x7f0b0008;
         public static final int useLogo=0x7f0b0012;
+        public static final int username2_editText=0x7f0b005e;
+        public static final int username_editText=0x7f0b0064;
         public static final int withText=0x7f0b0021;
         public static final int wrap_content=0x7f0b0019;
     }

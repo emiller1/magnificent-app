@@ -14,31 +14,37 @@ import umbc.edu.helpers.AppHelper;
 
 public class UserAccountService extends IntentService {
 
-    String username;
+    String TAG = "UserAccountService";
+    String username, email, password;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.w(TAG, "onCreate()");
     }
 
     public UserAccountService() {
         super("UserAccountService");
+        Log.w(TAG, "constructor");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Log.w(TAG, "onHandleIntent()");
         String action = intent.getStringExtra("action");
         switch (action){
             case "register":
                 AppHelper.init(getApplicationContext());
                 username = intent.getStringExtra("username");
-                register(username, intent.getStringExtra("email"), intent.getStringExtra("password"));
-                break;
-            case "login":
+                email = intent.getStringExtra("email");
+                password = intent.getStringExtra("password");
+                register(username, email, password);
                 break;
         }
     }
 
     private void register (String username, String email, String password){
+        Log.w(TAG, "register()");
         // Create a CognitoUserAttributes object and add user attributes
         CognitoUserAttributes userAttributes = new CognitoUserAttributes();
 
@@ -48,6 +54,7 @@ public class UserAccountService extends IntentService {
         // Adding user's contact info
         userAttributes.addAttribute("email", email);
 
+        //Do the signup in a seperate thread in the background
         AppHelper.getPool().signUpInBackground(username,password,userAttributes,null,signupCallback);
 
     }
@@ -56,8 +63,8 @@ public class UserAccountService extends IntentService {
 
         @Override
         public void onSuccess(CognitoUser cognitoUser, boolean userConfirmed, CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
+            Log.w(TAG, "onSuccess()");
             // Sign-up was successful
-
             // Check if this user (cognitoUser) needs to be confirmed
             if(!userConfirmed) {
                 // This user must be confirmed and a confirmation code was sent to the user
@@ -75,10 +82,10 @@ public class UserAccountService extends IntentService {
             }
             else {
                 // The user has already been confirmed
-                Intent broadcastIntent = new Intent();
-                broadcastIntent.putExtra(AppHelper.USER_CONFIRMED,"confirmed");
-                broadcastIntent.setAction(AppHelper.USER_CONFIRMED);
-                getBaseContext().sendBroadcast(broadcastIntent);
+                Intent intent = new Intent();
+                intent.putExtra(AppHelper.USER_CONFIRMED,"confirmed");
+                intent.setAction(AppHelper.USER_CONFIRMED);
+                getBaseContext().sendBroadcast(intent);
             }
         }
 

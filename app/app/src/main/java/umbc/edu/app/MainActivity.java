@@ -12,12 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoDevice;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserSession;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.AuthenticationContinuation;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.AuthenticationDetails;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ChallengeContinuation;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ForgotPasswordContinuation;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.MultiFactorAuthenticationContinuation;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.AuthenticationHandler;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.ForgotPasswordHandler;
 
 import umbc.edu.helpers.AppHelper;
 
@@ -26,71 +29,73 @@ import umbc.edu.helpers.AppHelper;
  * Created 3/17/17
  *
  * This is the login screen and the main activity that gets called first.
- *
- * Notes: This Activity should use the UserAccount service. It should not bind to the service it
- * should only start the service using startService(). The Activity should create a pending
- * intent and send it to the service, in which the service should send infomration back to
- * the Activity using the sent pending intent
  */
 public class    MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    String TAG = "MainActivity.class";
-    protected String tag = "MainActivity";
+    String TAG = "MainActivity";
     String user, pass;
 
     EditText username, password;
-    Button loginButton, facebook;
-    TextView createButton, forgotUsername, forgotPassword;
+    Button login_button, facebook_button;
+    TextView createAccount_button, forgotUsername, forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.w(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
-        Log.w(tag, "onCreate()");
         setContentView(R.layout.activity_main);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        username = (EditText) findViewById(R.id.editText);
-        password = (EditText) findViewById(R.id.editText2);
-        loginButton = (Button) findViewById(R.id.button2);
-        createButton = (TextView) findViewById(R.id.button);
-        forgotUsername = (TextView) findViewById(R.id.textView7);
-        forgotPassword = (TextView) findViewById(R.id.textView8);
-        facebook = (Button) findViewById(R.id.button4);
 
-        loginButton.setOnClickListener(this);
-        createButton.setOnClickListener(this);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        //Create EditText
+        username = (EditText) findViewById(R.id.username_editText);
+        password = (EditText) findViewById(R.id.password_editText);
+
+        //Create Buttons
+        login_button = (Button) findViewById(R.id.signIn_button);
+        facebook_button = (Button) findViewById(R.id.facebook_button);
+
+        //Create TextViews
+        createAccount_button = (TextView) findViewById(R.id.createAccount_button);
+        forgotUsername = (TextView) findViewById(R.id.textView7);
+        forgotPassword = (TextView) findViewById(R.id.forgotPassword_textView);
+
+        //Set onClick listeners
+        login_button.setOnClickListener(this);
+        createAccount_button.setOnClickListener(this);
         forgotUsername.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
-        facebook.setOnClickListener(this);
+        facebook_button.setOnClickListener(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.w(tag, "onPause()");
+        Log.w(TAG, "onPause()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.w(tag, "onResume()");
+        Log.w(TAG, "onResume()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.w(tag, "onDestroy()");
+        Log.w(TAG, "onDestroy()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.w(tag, "onStart()");
+        Log.w(TAG, "onStart()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.w(tag, "onStop()");
+        Log.w(TAG, "onStop()");
     }
 
     @Override
@@ -99,13 +104,13 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         pass = password.getText().toString();
         AlertDialogFragment fragment = new AlertDialogFragment();
         switch(v.getId()){
-            case R.id.button:       // When createButton is clicked
+            case R.id.createAccount_button:// When createButton is clicked
                 Intent createAccountIntent = new Intent(this, CreateAccountActivity.class);
                 createAccountIntent.putExtra("user", user);
                 createAccountIntent.putExtra("pass", pass);
                 startActivity(createAccountIntent);
                 break;
-            case R.id.button2:      // When loginButton is clicked
+            case R.id.signIn_button:// When loginButton is clicked
                 if (!user.matches("") && !pass.matches("")) {
                     AppHelper.init(getApplicationContext());
                     AppHelper.getPool().getUser(user).getSessionInBackground(authenticationHandler);
@@ -115,11 +120,13 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
                 //TODO: implement for forgotUsername
                 fragment.show(getSupportFragmentManager(), "Forgot username");
                 break;
-            case R.id.textView8:
-                //TODO: implement for forgotPassword
-                fragment.show(getSupportFragmentManager(), "Forgot password");
+            case R.id.forgotPassword_textView:
+                //fragment.show(getSupportFragmentManager(), "Forgot password");
+                if (!user.matches("")){
+                    AppHelper.getPool().getUser(user).forgotPasswordInBackground(forgotPasswordHandler);
+                }
                 break;
-            case R.id.button4:
+            case R.id.facebook_button:
                 //TODO: implement for facebook
                 fragment.show(getSupportFragmentManager(), "Login with Facebook");
                 break;
@@ -139,6 +146,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
         @Override
         public void getAuthenticationDetails(AuthenticationContinuation authenticationContinuation, String username) {
+            Log.w(TAG, "getAuthenticationDetails()");
             // The API needs user sign-in credentials to continue
             AuthenticationDetails authenticationDetails = new AuthenticationDetails(user, pass, null);
 
@@ -151,18 +159,59 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
         @Override
         public void getMFACode(MultiFactorAuthenticationContinuation multiFactorAuthenticationContinuation) {
-            Toast.makeText(MainActivity.this, "GET MFA CODE CALLED", Toast.LENGTH_LONG).show();
+            Log.w(TAG, "getMFACode()");
+            //Toast.makeText(MainActivity.this, "GET MFA CODE CALLED", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void authenticationChallenge(ChallengeContinuation challengeContinuation) {
-
+            Log.w(TAG, "authenticationChallenge()");
         }
 
         @Override
         public void onFailure(Exception e) {
+            Log.w(TAG, "authenticationChallenge()");
             AlertDialogFragment fragment = new AlertDialogFragment().newInstance(user);
             fragment.show(getSupportFragmentManager(), e.getLocalizedMessage());
+        }
+    };
+
+    // Callbacks
+    ForgotPasswordHandler forgotPasswordHandler = new ForgotPasswordHandler() {
+        @Override
+        public void onSuccess() {
+
+        }
+
+        @Override
+        public void getResetCode(ForgotPasswordContinuation continuation) {
+            // This will indicate where the code was sent
+            CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails = continuation.getParameters();
+            String destination = cognitoUserCodeDeliveryDetails.getDestination();
+            String deliveryMed = cognitoUserCodeDeliveryDetails.getDeliveryMedium();
+
+            // Code to get the code from the user - user dialogs etc.
+
+            // If the program control has to exit this method, take the "continuation" object.
+            // "continuation" is the only possible way to continue with the process
+
+            //TODO GET THE USER'S NEW PASSWORD
+
+            // When the code is available
+
+            // Set the new password
+            continuation.setPassword("PASSWORD");//TODO CHANGE THIS TO THE USER ENTERED PASSWORD
+
+            // Set the code to verify
+            continuation.setVerificationCode("CODE#");//TODO CHANGE THIS TO THE CODE THE USER RECEIVED
+
+            // Let the forgot password process proceed
+            continuation.continueTask();
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            Log.d(TAG, e.getLocalizedMessage());
         }
     };
 }

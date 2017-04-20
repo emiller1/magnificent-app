@@ -18,15 +18,10 @@ import umbc.edu.services.UserAccountService;
 /**
  * @author elishiah miller
  * Created 3/17/17
- *
- * Notes: This Activity should use the UserAccount service. It should not bind to the service it
- * should only start the service using startService(). The Activity should create a pending
- * intent and send it to the service, in which the service should send infomration back to
- * the Activity using the sent pending intent
  */
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
-    protected String tag = "CreateAccountActivity";
+    String TAG = "CreateAccountActivity";
 
     EditText username, email, password;
     Button register;
@@ -36,13 +31,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w(tag, "onCreate()");
+        Log.w(TAG, "onCreate()");
         setContentView(R.layout.activity_create_account);
 
-        username = (EditText) findViewById(R.id.editText3);
-        email = (EditText) findViewById(R.id.editText4);
-        password = (EditText) findViewById(R.id.editText5);
-        register = (Button) findViewById(R.id.button3);
+        username = (EditText) findViewById(R.id.username2_editText);
+        email = (EditText) findViewById(R.id.email_editText);
+        password = (EditText) findViewById(R.id.password2_editText);
+
+        register = (Button) findViewById(R.id.register_button);
         register.setOnClickListener(this);
 
         // Allows user to carry over attempted login credentials for use in account registration
@@ -60,43 +56,42 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onPause() {
         super.onPause();
-        Log.w(tag, "onPause()");
+        Log.w(TAG, "onPause()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.w(tag, "onResume()");
+        Log.w(TAG, "onResume()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.w(tag, "onDestroy()");
+        Log.w(TAG, "onDestroy()");
         unregisterReceiver(intentReceiver);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.w(tag, "onStart()");
+        Log.w(TAG, "onStart()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.w(tag, "onStop()");
+        Log.w(TAG, "onStop()");
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.button3:       // When createButton is clicked
+            case R.id.register_button:// When createButton is clicked
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 String mail = email.getText().toString();
                 if(!user.matches("") && !mail.matches("") && !pass.matches("")){
-                    confirmIntent = new Intent(this, ConfirmAccountActivity.class);
                     accountIntent = new Intent(this, UserAccountService.class);
                     accountIntent.putExtra("username", user);
                     accountIntent.putExtra("password", pass);
@@ -119,13 +114,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             AlertDialogFragment fragment = new AlertDialogFragment();
             switch (action) {
                 case AppHelper.SIGN_UP_FAILED:
-                    fragment.show(getSupportFragmentManager(), intent.getStringExtra(AppHelper.SIGN_UP_FAILED));
-
                     accountIntent.removeExtra("username");
                     accountIntent.removeExtra("password");
                     accountIntent.removeExtra("email");
                     accountIntent.removeExtra("action");
                     stopService(accountIntent);
+                    fragment.show(getSupportFragmentManager(), intent.getStringExtra(AppHelper.SIGN_UP_FAILED));
                     break;
                 case AppHelper.USER_CONFIRMED:
                     accountIntent.removeExtra("username");
@@ -133,12 +127,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     accountIntent.removeExtra("email");
                     accountIntent.removeExtra("action");
                     stopService(accountIntent);
-
                     fragment.show(getSupportFragmentManager(), "User already exists");
-
                     break;
                 case AppHelper.USER_NOT_CONFIRMED:
                     Bundle extras = intent.getExtras();
+                    confirmIntent = new Intent(CreateAccountActivity.this, ConfirmAccountActivity.class);
                     confirmIntent.putExtra("username", extras.getString("username"));
                     confirmIntent.putExtra("destination", extras.getString("destination"));
                     confirmIntent.putExtra("deliveryMed", extras.getString("deliveryMed"));

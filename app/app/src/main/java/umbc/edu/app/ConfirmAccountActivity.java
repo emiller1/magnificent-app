@@ -16,10 +16,16 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.Verificat
 
 import umbc.edu.helpers.AppHelper;
 
+/**
+ * @author elishiah miller
+ * Created 3/17/17
+ */
 public class ConfirmAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     //http://docs.aws.amazon.com/cognito/latest/developerguide/tutorial-integrating-user-pools-android.html
     //https://github.com/awslabs/aws-sdk-android-samples/blob/8957e9402cf7490bfa9c3939eabc92f1b7d4572e/AmazonCognitoYourUserPoolsDemo/app/src/main/java/com/amazonaws/youruserpools/RegisterUser.java
+
+    String TAG = "ConfirmAccountActivity";
 
     String username, destination, deliveryMed;
     TextView confimration_message, resend;
@@ -29,6 +35,7 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w(TAG, "onCreate()");
         setContentView(R.layout.activity_confirm_account);
 
         Bundle extras = getIntent().getExtras();
@@ -42,18 +49,19 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
         code = (EditText) findViewById(R.id.editText_code);
         resend = (TextView) findViewById(R.id.resend);
         resend.setOnClickListener(this);
-        // AppHelper.getPool().getUser(userName).resendConfirmationCodeInBackground(resendConfCodeHandler);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        Log.w(TAG, "onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.w(TAG, "onResume()");
         if (destination != null && deliveryMed != null) {
             confimration_message.setText("A confirmation code was sent to " + destination + " via " + deliveryMed);
         }
@@ -66,6 +74,7 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     @Override
     protected void onPause() {
         super.onPause();
+        Log.w(TAG, "onPause)");
     }
 
     @Override
@@ -82,7 +91,6 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
                 if(!code_.matches("")){
                     Toast.makeText(this, username,Toast.LENGTH_LONG).show();
                     AppHelper.getPool().getUser(username).confirmSignUpInBackground(code_, true, confHandler);
-                    Log.d("confirm_button","***WHAT***");
                 }
                 break;
             case R.id.resend:
@@ -95,30 +103,31 @@ public class ConfirmAccountActivity extends AppCompatActivity implements View.On
     GenericHandler confHandler = new GenericHandler() {
         @Override
         public void onSuccess() {
+            Log.d(TAG,"onSuccess()");
             AlertDialogFragment fragment = new AlertDialogFragment();
             fragment.show(getSupportFragmentManager(), "ConfirmAccountActivity Success");
-
-            Log.d("onSuccess","***Success***");
         }
 
         @Override
         public void onFailure(Exception exception) {
+            Log.d("ERROR","***FAILURE***"+exception.getLocalizedMessage());
             AlertDialogFragment fragment = new AlertDialogFragment();
             fragment.show(getSupportFragmentManager(), "ConfirmAccountActivity Failure");
-
-            Log.d("ERROR","***FAILURE***"+exception.getLocalizedMessage());
         }
     };
 
     VerificationHandler resendConfCodeHandler = new VerificationHandler() {
         @Override
         public void onSuccess(CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
-
+            Log.d(TAG,"onSuccess()");
+            Toast.makeText(ConfirmAccountActivity.this, "Code Sent", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onFailure(Exception exception) {
-
+            Log.d("ERROR","***FAILURE***"+exception.getLocalizedMessage());
+            AlertDialogFragment fragment = new AlertDialogFragment();
+            fragment.show(getSupportFragmentManager(), "ConfirmAccountActivity Resend  Failed");
         }
     };
 }

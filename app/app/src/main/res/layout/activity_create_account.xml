@@ -41,28 +41,15 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:layout_below="@+id/editText3"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
+        android:layout_below="@+id/username2_editText"
+        android:layout_alignLeft="@+id/username2_editText"
+        android:layout_alignStart="@+id/username2_editText"
         android:layout_marginTop="16dp"
-        android:id="@+id/editText4"
+        android:id="@+id/email_editText"
         android:hint="Email Address"
         android:textColorHint="@color/whiteText"
         android:textColor="@color/whiteText"
         android:backgroundTint="@color/colorAccent" />
-
-    <Button
-        android:text="Register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignStart="@+id/editText5"
-        android:layout_marginBottom="43dp"
-        android:id="@+id/button3"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:backgroundTint="@color/goldObject" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -70,7 +57,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_marginTop="21dp"
-        android:id="@+id/editText3"
+        android:id="@+id/username2_editText"
         android:hint="Username"
         android:textColorHint="@color/whiteText"
         android:textColor="@color/whiteText"
@@ -84,13 +71,24 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/password2_editText"
         android:hint="Password"
         android:textColorHint="@color/whiteText"
         android:textColor="@color/whiteText"
-        android:layout_below="@+id/editText4"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignStart="@+id/editText4"
+        android:layout_below="@+id/email_editText"
+        android:layout_alignLeft="@+id/email_editText"
+        android:layout_alignStart="@+id/email_editText"
         android:layout_marginTop="18dp"
         android:backgroundTint="@color/colorAccent" />
+
+    <Button
+        android:text="Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="43dp"
+        android:id="@+id/register_button"
+        android:backgroundTint="@color/goldObject"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/password2_editText"
+        android:layout_alignStart="@+id/password2_editText" />
 </RelativeLayout>
