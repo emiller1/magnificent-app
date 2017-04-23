@@ -39,6 +39,8 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     Button login_button, facebook_button;
     TextView createAccount_button, forgotPassword;
 
+    private ForgotPasswordContinuation forgotPasswordContinuation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.w(TAG, "onCreate()");
@@ -117,7 +119,10 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.forgotPassword_textView:
                 //fragment.show(getSupportFragmentManager(), "Forgot password");
                 if (!user.matches("")){
+                    AppHelper.init(getApplicationContext());
                     AppHelper.getPool().getUser(user).forgotPasswordInBackground(forgotPasswordHandler);
+                }else{
+                    Toast.makeText(this, "Please Enter Your Username", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.facebook_button:
@@ -183,30 +188,46 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
             CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails = continuation.getParameters();
             String destination = cognitoUserCodeDeliveryDetails.getDestination();
             String deliveryMed = cognitoUserCodeDeliveryDetails.getDeliveryMedium();
+            forgotPasswordContinuation = continuation;
 
+            Intent intent = new Intent(MainActivity.this, ResetPasswordActivity.class);
+            intent.putExtra("destination",destination);
+            intent.putExtra("deliveryMed",deliveryMed);
+            startActivityForResult(intent, 1);
+
+            //----------------------------------------------------------------------------------
+            // These are just notes: Actions are taken place in onActivityResult Method
+            //----------------------------------------------------------------------------------
             // Code to get the code from the user - user dialogs etc.
-
             // If the program control has to exit this method, take the "continuation" object.
             // "continuation" is the only possible way to continue with the process
-
-            //TODO GET THE USER'S NEW PASSWORD
-
             // When the code is available
-
             // Set the new password
-            continuation.setPassword("PASSWORD");//TODO CHANGE THIS TO THE USER ENTERED PASSWORD
-
+            //continuation.setPassword("PASSWORD");
             // Set the code to verify
-            continuation.setVerificationCode("CODE#");//TODO CHANGE THIS TO THE CODE THE USER RECEIVED
-
+            //continuation.setVerificationCode("CODE#");/
             // Let the forgot password process proceed
-            continuation.continueTask();
+            //continuation.continueTask();
         }
 
         @Override
         public void onFailure(Exception e) {
             Log.d(TAG, e.getLocalizedMessage());
+            Toast.makeText(MainActivity.this,"FAILURE FOR GOTPASSWORD", Toast.LENGTH_LONG).show();
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(requestCode==RESULT_OK){
+                String password = data.getExtras().getString("password");
+                String code = data.getExtras().getString("code");
+                forgotPasswordContinuation.setPassword(password);
+                forgotPasswordContinuation.setVerificationCode(code);
+                forgotPasswordContinuation.continueTask();
+            }
+        }
+    }
 }
 

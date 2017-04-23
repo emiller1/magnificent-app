@@ -3,12 +3,30 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_3166a7df77e40d165b6896fabbc4fff92d310d97\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
         <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_5a70a50a2e05e6bdd539f236b6783c23db2951c3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_2441a329c15191035873365cf4903358620c7998\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -25,7 +43,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="4ed384eb72ec88cd9b28177653f46d4d75b52550">
+        sha1="e2284ee4f148b01865d529cce6f795f7f4f2ec54">
         <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3ae4abf6a85e7f64de16d358b4ff336e3e8c138a\classes.dex" />
     </item>
     <item
@@ -36,42 +54,6 @@
         revision="25.0.2"
         sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
         <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_c53784de1e9c875456ce5efdcbbbf8086ff835a8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_1464c2938dd91ea00953ce10a4961d35c0e2e215\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_a36adfbbea6ec19d8dcda2106034a15587cb88f9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_48130cd7f79e1f6773cf1bb165f0bee5312458b6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\libs\aws-android-sdk-core-2.4.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="352fe9602022d6a1235dcaa9aa0fdd5e0195d74d">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-core-2.4.1_3f7e571981207f9a186e590416a209f581e6e4f9\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -93,12 +75,57 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\elish\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_63674e0a98b2874084aa9546b6e2e6fe199abfa1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_1464c2938dd91ea00953ce10a4961d35c0e2e215\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\libs\aws-android-sdk-cognitoidentityprovider-2.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="59baa97d590a731f3a29f18072f67f30173f2dc9">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-cognitoidentityprovider-2.4.1_85788729ec3b85442e35fcd4391e5dcca44d05b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
         <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_0885bd72c80939af3c7af1a33bec3cfc02708204\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_34cbe179b0c6fca1f6baa0bde61021e19e8972f2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_a36adfbbea6ec19d8dcda2106034a15587cb88f9\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -115,8 +142,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="96322be3133b4d17d781ced1fb18864d4c77af4b">
+        sha1="f81d6e427692eda1d25ffb8077ac51d459308552">
         <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_12d83231a8cdd7378d5cae875c07584bd867f204\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_48130cd7f79e1f6773cf1bb165f0bee5312458b6\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -129,57 +165,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_3166a7df77e40d165b6896fabbc4fff92d310d97\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_2441a329c15191035873365cf4903358620c7998\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_63674e0a98b2874084aa9546b6e2e6fe199abfa1\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\libs\aws-android-sdk-cognitoidentityprovider-2.4.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="59baa97d590a731f3a29f18072f67f30173f2dc9">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-cognitoidentityprovider-2.4.1_85788729ec3b85442e35fcd4391e5dcca44d05b3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_34cbe179b0c6fca1f6baa0bde61021e19e8972f2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_2b43bc3e63822e4161ccf4d93a34957f4caccf66\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\elish\Desktop\magnificent-app\app\app\libs\aws-android-sdk-core-2.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="352fe9602022d6a1235dcaa9aa0fdd5e0195d74d">
+        <dex dex="C:\Users\elish\Desktop\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-core-2.4.1_3f7e571981207f9a186e590416a209f581e6e4f9\classes.dex" />
     </item>
 
 </items>
