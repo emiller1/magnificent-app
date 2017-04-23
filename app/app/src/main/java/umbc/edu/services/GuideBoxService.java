@@ -22,7 +22,7 @@ import java.util.List;
  * @author elishiah miller
  * Created 3/17/17
  */
-public class GuideBoxService extends Service {
+public class GuideBoxService extends Service{
 
     //TODO: This key should be loaded upon successful login from the online db
     //TODO: We will keep it hard coded for now
@@ -31,12 +31,18 @@ public class GuideBoxService extends Service {
     private final IBinder mBinder = new LocalBinder();
     long browse_total_results, browse_total_returned;
     Result search_Result;
-    public void browseGuideboxService() {
-        String[] input = new String[1];
-        new guideboxAsyncTask().execute(input);
-
+    List<Result> final_result = null;
+    public List<Result> browseGuideboxService() {
+        return final_result;
     }
-    public Result searchGuideboxService(String _type, String term){
+    public void startGuideboxservice(){
+        String[] input = new String[1];
+        input[0] = "browse";
+        Log.d("in guidebox service","1");
+        new guideboxAsyncTask().execute(input);
+    }
+
+    public Result searchGuideboxService(String _type, String term) {
         String[] input = new String[3];
         input[0] = "search";
         input[1] = _type; // Elsie can send _type = "id" and Bharadwaz can send _type = "name"
@@ -45,44 +51,46 @@ public class GuideBoxService extends Service {
         return search_Result;
     }
 
-    private class guideboxAsyncTask extends AsyncTask<String,Void,String>{
+
+
+    public class guideboxAsyncTask extends AsyncTask<String, Void, List<Result>> {
 
         @Override
-        protected String doInBackground(String... params) {
+        protected List<Result> doInBackground(String... params) {
             if (params[0] == "browse") {
                 URL url;
                 HttpURLConnection urlConnection = null;
-                List<Result> final_Result = new ArrayList<Result>();
+
                 try {
                     url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
                     urlConnection = (HttpURLConnection) url.openConnection();
                     Log.d("jsonData", "hi");
                     InputStream in = urlConnection.getInputStream();
                     Log.d("in async task", "no");
-                    final_Result = readJsonStream(in);
-                    Log.d("finalresult count", String.valueOf(final_Result.size()));
+                    final_result = readJsonStream(in);
+                    Log.d("finalresult count", String.valueOf(final_result.size()));
                     Log.d("total results", String.valueOf(browse_total_results));
                     Log.d("total returned", String.valueOf(browse_total_returned));
-                    for (int i = 0; i < final_Result.size(); i++) {
-                        Log.d("Title", String.valueOf(i + 1) + final_Result.get(i).title);
+                    for (int i = 0; i < final_result.size(); i++) {
+                        Log.d("Title", String.valueOf(i + 1) + final_result.get(i).title);
                     }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     urlConnection.disconnect();
                 }
-            }
-            else if(params[0] == "search"){
+            } else if (params[0] == "search") {
                 URL url = null;
                 HttpURLConnection urlConnection = null;
 
-                if(params[1] == "id"){
+                if (params[1] == "id") {
                     try {
                         url = new URL(""); //intialize url using params[2]
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
-                }else if(params[1] == "name"){
+                } else if (params[1] == "name") {
                     try {
                         url = new URL("http://api-public.guidebox.com/v2/search?api_key=YOUR_API_KEY&type=movie&field=title&query=Terminator");
                     } catch (MalformedURLException e) {
@@ -94,7 +102,7 @@ public class GuideBoxService extends Service {
                     InputStream in = urlConnection.getInputStream();
                     JsonReader search_reader = new JsonReader(new InputStreamReader(in));
                     search_Result = readResult(search_reader);
-                        Log.d("Title", search_Result.title);
+                    Log.d("Title", search_Result.title);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -102,11 +110,20 @@ public class GuideBoxService extends Service {
                 }
 
             }
+
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Result> results) {
+            super.onPostExecute(results);
+            Intent myIntent = new Intent();
+            myIntent.setAction("BrowseDone");
+            getBaseContext().sendBroadcast(myIntent);
         }
     }
 
-    public class Result{
+    public class Result {
         public Result(List<Result> result_list) {
             this.result_list = result_list;
         }
@@ -123,10 +140,16 @@ public class GuideBoxService extends Service {
             this.id = id;
             this.title = title;
         }
-        public Result(){}
+
+        public Result() {
+        }
+        public String getTitle(){
+            return this.title;
+        }
     }
+
     public List<Result> readJsonStream(InputStream in) throws IOException {
-        Log.d("in readJsonStream","hi");
+        Log.d("in readJsonStream", "hi");
         JsonReader reader = new JsonReader(new InputStreamReader(in));
         try {
             return readMessagesObject(reader);
@@ -137,31 +160,31 @@ public class GuideBoxService extends Service {
 
     public List<Result> readMessagesObject(JsonReader reader) throws IOException {
         // List<Result> messages = new ArrayList<Result>();
-        List <Result> result_list = new ArrayList<Result>();
+        List<Result> result_list = new ArrayList<Result>();
 
-        Log.d("in readMessagesObject","hi");
+        Log.d("in readMessagesObject", "hi");
         reader.beginObject();
         while (reader.hasNext()) {
-            Log.d("in readMessage hasNext","hi");
+            Log.d("in readMessage hasNext", "hi");
             String message = reader.nextName();
             if (message.equals("total_results")) {
                 browse_total_results = reader.nextLong();
                 Log.d("readMessa total_results", String.valueOf(browse_total_results));
-            }else if(message.equals("total_returned")){
+            } else if (message.equals("total_returned")) {
                 browse_total_returned = reader.nextLong();
-            }else if(message.equals("results")){
+            } else if (message.equals("results")) {
                 result_list = readResultArray(reader);
-            }
-            else {
+            } else {
                 reader.skipValue();
             }
         }
         reader.endObject();
         return result_list;
     }
+
     public List<Result> readResultArray(JsonReader reader) throws IOException {
         List<Result> result = new ArrayList<Result>();
-        Log.d("in readResultAray","hi");
+        Log.d("in readResultAray", "hi");
         reader.beginArray();
         while (reader.hasNext()) {
             result.add(readResult(reader));
@@ -169,25 +192,27 @@ public class GuideBoxService extends Service {
         reader.endArray();
         return result;
     }
+
     public Result readResult(JsonReader reader) throws IOException {
         reader.beginObject();
-        Log.d("in readResult","hi");
+        Log.d("in readResult", "hi");
         long id = 0;
         String title = "";
-        while (reader.hasNext()){
+        while (reader.hasNext()) {
             String name = reader.nextName();
-            if(name.equals("id")){
+            if (name.equals("id")) {
                 id = reader.nextInt();
-            }else if(name.equals("title")){
+            } else if (name.equals("title")) {
                 title = reader.nextString();
 
-            }else{
+            } else {
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new Result(id,title);
+        return new Result(id, title);
     }
+
     /**
      * Class used for the client Binder.
      */
@@ -204,4 +229,5 @@ public class GuideBoxService extends Service {
     }
 
     //TODO: Implement methods for the REST-API
+
 }
