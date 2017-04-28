@@ -1,8 +1,18 @@
 package umbc.edu.app;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.util.ArrayList;
+
+import umbc.edu.pojo.Show;
+import umbc.edu.services.GuideBoxService;
 
 /**
  * @author elishiah miller
@@ -14,7 +24,11 @@ import android.util.Log;
  */
 public class HomeActivity extends AppCompatActivity {
 
+    String TAG = "HomeActivity";
     protected String tag = "HomeActivity";
+    private GuideBoxService guideBoxService;
+    ArrayList<Show> shows = new ArrayList<Show>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.w(tag, "onStart()");
+        Intent intenet = new Intent(this, GuideBoxService.class);
+        bindService(intenet,connection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -52,4 +68,18 @@ public class HomeActivity extends AppCompatActivity {
         super.onStop();
         Log.w(tag, "onStop()");
     }
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.d(TAG, "Service Connected");
+            guideBoxService = ((GuideBoxService.LocalBinder)iBinder).getService();
+            guideBoxService.requestShows();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            guideBoxService = null;
+        }
+    };
 }

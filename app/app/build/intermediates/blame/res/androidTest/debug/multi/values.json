@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\elish\\Desktop\\magnificent-app\\app\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/milleej1/Desktop/master-branch/magnificent-app/app/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\elish\\Desktop\\magnificent-app\\app\\app\\build\\intermediates\\exploded-aar\\com.android.support.test\\rules\\0.5\\res\\values\\values.xml",
+                    "file": "/Users/milleej1/.android/build-cache/0ae2baecded852d9716515d1560eecca91bfe3cf/output/res/values/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
