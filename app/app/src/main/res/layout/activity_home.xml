@@ -36,9 +36,17 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" >
+            android:layout_alignParentTop="true"
+            android:background="#2f194a"
+            >
 
 
+            <ListView
+                android:id = "@+id/browse_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#2f194a"
+                android:dividerHeight="20dp"/>
         </FrameLayout>
     </LinearLayout>
     <!-- The navigation drawer -->

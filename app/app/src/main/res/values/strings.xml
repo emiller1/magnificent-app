@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Watcha</string>
+    <string-array name="spinner_list">
+        <item>Add to</item>
+        <item>Currently Watching</item>
+        <item>Plan to Watch</item>
+        <item>On Hold</item>
+        <item>Favorites</item>
+        <item>Dropped</item>
+    </string-array>
 </resources>

@@ -2,6 +2,8 @@ package umbc.edu.services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
@@ -32,6 +34,7 @@ public class GuideBoxService extends Service{
     long browse_total_results, browse_total_returned;
     Result search_Result;
     List<Result> final_result = null;
+    List<Bitmap> artWorkList = new ArrayList<Bitmap>();
     public List<Result> browseGuideboxService() {
         return final_result;
     }
@@ -51,6 +54,9 @@ public class GuideBoxService extends Service{
         return search_Result;
     }
 
+    public List<Bitmap> getBrowseImages() {
+        return artWorkList;
+    }
 
 
     public class guideboxAsyncTask extends AsyncTask<String, Void, List<Result>> {
@@ -60,7 +66,8 @@ public class GuideBoxService extends Service{
             if (params[0] == "browse") {
                 URL url;
                 HttpURLConnection urlConnection = null;
-
+                HttpURLConnection imgurlConnection = null;
+                HttpURLConnection descriptionConnection = null;
                 try {
                     url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
                     urlConnection = (HttpURLConnection) url.openConnection();
@@ -71,14 +78,31 @@ public class GuideBoxService extends Service{
                     Log.d("finalresult count", String.valueOf(final_result.size()));
                     Log.d("total results", String.valueOf(browse_total_results));
                     Log.d("total returned", String.valueOf(browse_total_returned));
-                    for (int i = 0; i < final_result.size(); i++) {
-                        Log.d("Title", String.valueOf(i + 1) + final_result.get(i).title);
-                    }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     urlConnection.disconnect();
+                    for (Result tempResult: final_result)
+                    {
+                        URL tempURL= null;
+                        try {
+                            tempURL = new URL(tempResult.artwork_448x252);
+                            imgurlConnection = (HttpURLConnection) tempURL.openConnection();
+                            Bitmap artwork =BitmapFactory.decodeStream(tempURL.openStream());
+                            artWorkList.add(artwork);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }finally {
+                            imgurlConnection.disconnect();
+                        }
+
+                    }
+                    for (Result descriptionResult: final_result)
+                    {
+                        URL temURL= null;
+
+
+                    }
                 }
             } else if (params[0] == "search") {
                 URL url = null;
@@ -117,6 +141,7 @@ public class GuideBoxService extends Service{
         @Override
         protected void onPostExecute(List<Result> results) {
             super.onPostExecute(results);
+            Log.d("in guideboxservice", String.valueOf(artWorkList.size()));
             Intent myIntent = new Intent();
             myIntent.setAction("BrowseDone");
             getBaseContext().sendBroadcast(myIntent);
@@ -130,15 +155,16 @@ public class GuideBoxService extends Service{
 
         long id;
         String title;
-        String artwork_208x117;
-        String artwork_304x171;
+ //       String artwork_208x117;
+ //       String artwork_304x171;
         String artwork_448x252;
-        String artwork_608x342;
+ //       String artwork_608x342;
         List<Result> result_list = new ArrayList<Result>();
 
-        public Result(long id, String title) {
+        public Result(long id, String title,String imgurl) {
             this.id = id;
             this.title = title;
+            this.artwork_448x252 = imgurl;
         }
 
         public Result() {
@@ -198,6 +224,7 @@ public class GuideBoxService extends Service{
         Log.d("in readResult", "hi");
         long id = 0;
         String title = "";
+        String imgurl = "";
         while (reader.hasNext()) {
             String name = reader.nextName();
             if (name.equals("id")) {
@@ -205,12 +232,14 @@ public class GuideBoxService extends Service{
             } else if (name.equals("title")) {
                 title = reader.nextString();
 
-            } else {
+            }else if(name.equals("artwork_448x252")){
+                imgurl = reader.nextString();
+            } else{
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new Result(id, title);
+        return new Result(id, title,imgurl);
     }
 
     /**

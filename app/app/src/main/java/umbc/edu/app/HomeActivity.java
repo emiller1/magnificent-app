@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
@@ -21,9 +22,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +51,12 @@ public class HomeActivity extends AppCompatActivity{
     Toolbar myToolbar;
     IntentFilter browseIntentFilter;
     List<GuideBoxService.Result> browseList = new ArrayList<GuideBoxService.Result>();
+    List<Bitmap> browseImages = new ArrayList<Bitmap>();
+    private static browseListAdapter adapter;
+    ListView browserListView;
+    ListView drawerListView;
+    List<String> drawerList = new ArrayList<String>();
+    Spinner mySpinner;
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +70,13 @@ public class HomeActivity extends AppCompatActivity{
         myToolbar.setTitleTextColor(Color.rgb(255,189,111));
         myDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         content_layout = (FrameLayout) findViewById(R.id.content_frame);
+        browserListView = (ListView) findViewById(R.id.browse_list_view);
+
+
+        drawerListView = (ListView) findViewById(R.id.left_drawer);
+        drawerList.add("Profile");
+        drawerList.add("My Profile");
+        drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
         browseIntentFilter = new IntentFilter();
         browseIntentFilter.addAction("BrowseDone");
         registerReceiver(bintentReceiver, browseIntentFilter);
@@ -71,11 +88,15 @@ public class HomeActivity extends AppCompatActivity{
             switch (action) {
                 case "BrowseDone":
                     browseList = myservice.browseGuideboxService();
+                    browseImages = myservice.getBrowseImages();
 
                     for (int i = 0; i < browseList.size(); i++) {
                         Log.d("TitleMainActivity", String.valueOf(i + 1) + browseList.get(i).getTitle());
                     }
+                    adapter = new browseListAdapter(browseList,browseImages,getApplicationContext());
+                    browserListView.setAdapter(adapter);
                     break;
+
             }
         }
     };
@@ -146,6 +167,4 @@ public class HomeActivity extends AppCompatActivity{
         super.onStop();
         Log.w(tag, "onStop()");
     }
-
-
 }
