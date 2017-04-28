@@ -40,7 +40,7 @@ public class GuideBoxService extends Service{
 
     String TAG = "GuideBoxService";
     final private String api_key = "8c6513c863495b95018e7ba2aa2ce49360dc418f";
-    private ArrayList<Show> shows = new ArrayList<Show>();
+  //  private ArrayList<Show> shows = new ArrayList<Show>();
     private ArrayList<String> showIds = new ArrayList<String>();
 
     // Binder given to clients
@@ -335,10 +335,10 @@ public class GuideBoxService extends Service{
         }
 
         // Uncomment this if you want to show the progress of the download to the user
-        /*@Override
+        @Override
         protected void onProgressUpdate(Integer... progress){
             Toast.makeText(GuideBoxService.this, String.valueOf(progress[0]) + "% downloaded of show ids", Toast.LENGTH_LONG).show();
-        }*/
+
 
         @Override
         protected void onPostExecute(ArrayList<String> ids){

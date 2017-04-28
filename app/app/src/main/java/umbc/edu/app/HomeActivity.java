@@ -172,8 +172,8 @@ public class HomeActivity extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
         Log.w(tag, "onStart()");
-        Intent intenet = new Intent(this, GuideBoxService.class);
-        bindService(intenet,connection, Context.BIND_AUTO_CREATE);
+        //Intent intenet = new Intent(this, GuideBoxService.class);
+        //bindService(intenet,connection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -181,7 +181,7 @@ public class HomeActivity extends AppCompatActivity{
         super.onStop();
         Log.w(tag, "onStop()");
     }
-
+/*
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -194,5 +194,5 @@ public class HomeActivity extends AppCompatActivity{
         public void onServiceDisconnected(ComponentName componentName) {
             guideBoxService = null;
         }
-    };
+    };*/
 }

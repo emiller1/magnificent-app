@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/milleej1/Desktop/master-branch/magnificent-app/app/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "outputFile": "D:\\Courses\\MobileComputing\\Project2\\magnificent-app\\app\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,31 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "/Users/milleej1/.android/build-cache/0ae2baecded852d9716515d1560eecca91bfe3cf/output/res/values/values.xml",
+                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\d9f91d006c96362b7776b6ee9bee81a4dbf5012f\\output\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Users\\milleej1\\Desktop\\master-branch\\magnificent-app\\app\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "D:\\Users\\milleej1\\.android\\build-cache\\0ae2baecded852d9716515d1560eecca91bfe3cf\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

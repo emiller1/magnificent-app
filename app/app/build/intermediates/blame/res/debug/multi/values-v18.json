@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/milleej1/Desktop/master-branch/magnificent-app/app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+        "outputFile": "D:\\Users\\milleej1\\Desktop\\master-branch\\magnificent-app\\app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,31 @@
                     "endOffset": 99
                 },
                 "from": {
-                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-v18/values-v18.xml",
+                    "file": "D:\\Users\\milleej1\\.android\\build-cache\\b08066dbce5bfa444be0de18e2d5c8b2fa015261\\output\\res\\values-v18\\values-v18.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 48,
+                        "endOffset": 99
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Courses\\MobileComputing\\Project2\\magnificent-app\\app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-v18\\values-v18.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
