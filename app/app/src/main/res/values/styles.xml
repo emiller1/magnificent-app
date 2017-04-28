@@ -6,6 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/WatchaActionBar</item>
+    </style>
+
+    <style name="WatchaActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="titleTextStyle">@style/WatchaTitleColor</item>
+        <item name="background">@color/colorPrimary</item>
+    </style>
+
+    <style name="WatchaTitleColor" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/goldText</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

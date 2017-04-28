@@ -1,5 +1,6 @@
 package umbc.edu.app;
 
+
 import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
@@ -14,6 +15,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +36,11 @@ import java.util.List;
 
 import umbc.edu.services.GuideBoxService;
 
+import java.util.ArrayList;
+
+import umbc.edu.pojo.Show;
+import umbc.edu.services.GuideBoxService;
+
 /**
  * @author elishiah miller
  * Created 3/17/17
@@ -44,7 +51,9 @@ import umbc.edu.services.GuideBoxService;
  */
 public class HomeActivity extends AppCompatActivity{
 
+    String TAG = "HomeActivity";
     protected String tag = "HomeActivity";
+
     GuideBoxService myservice;
     DrawerLayout myDrawer;
     FrameLayout content_layout;
@@ -58,6 +67,9 @@ public class HomeActivity extends AppCompatActivity{
     List<String> drawerList = new ArrayList<String>();
     Spinner mySpinner;
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+   // private GuideBoxService guideBoxService;
+    //ArrayList<Show> shows = new ArrayList<Show>();
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,6 +172,8 @@ public class HomeActivity extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
         Log.w(tag, "onStart()");
+        Intent intenet = new Intent(this, GuideBoxService.class);
+        bindService(intenet,connection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -167,4 +181,18 @@ public class HomeActivity extends AppCompatActivity{
         super.onStop();
         Log.w(tag, "onStop()");
     }
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.d(TAG, "Service Connected");
+            guideBoxService = ((GuideBoxService.LocalBinder)iBinder).getService();
+            guideBoxService.requestShows();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            guideBoxService = null;
+        }
+    };
 }

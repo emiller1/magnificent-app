@@ -8,10 +8,103 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="umbc.edu.app.MainActivity">
+    tools:context="umbc.edu.app.MainActivity"
+    android:background="@color/purpleBackground">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/username_editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:hint="Username"
+        android:textColorHint="@color/whiteText"
+        android:textColor="@color/whiteText"
+        android:backgroundTint="@color/colorAccent" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_editText"
+        android:layout_below="@+id/username_editText"
+        android:layout_alignLeft="@+id/username_editText"
+        android:layout_alignStart="@+id/username_editText"
+        android:layout_marginTop="34dp"
+        android:hint="Password"
+        android:textColorHint="@color/whiteText"
+        android:textColor="@color/whiteText"
+        style="@style/AppTheme"
+        android:layout_alignRight="@+id/username_editText"
+        android:layout_alignEnd="@+id/username_editText"
+        android:backgroundTint="@color/colorAccent" />
+
+    <Button
+        android:text="Sign in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:id="@+id/signIn_button"
+        android:backgroundTint="@color/goldObject" />
+
+    <TextView
+        android:text="Create Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createAccount_button"
+        android:textColor="@color/goldText"
+        android:clickable="true"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorAccent" />
+
+    <TextView
+        android:text="New to Watcha?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textColor="@color/whiteText"
+        android:layout_above="@+id/createAccount_button"
+        android:layout_centerHorizontal="true" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebooklogin_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_above="@+id/facebook_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:id="@+id/textView6"
+        android:textColor="@color/whiteText" />
+
+    <TextView
+        android:text="Forgot Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/forgotPassword_textView"
+        android:clickable="true"
+        android:textColor="@color/whiteText"
+        android:textStyle="normal|bold"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_below="@+id/signIn_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp" />
+
 </RelativeLayout>

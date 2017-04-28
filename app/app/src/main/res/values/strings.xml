@@ -8,4 +8,7 @@
         <item>Favorites</item>
         <item>Dropped</item>
     </string-array>
+
+    
+    <string name="facebook_app_id">1808678002784790</string>
 </resources>
