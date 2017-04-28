@@ -67,8 +67,4 @@ public class AppHelper {
     public static CognitoDevice getNewDevice() {
         return newDevice;
     }
-
-    public static String getPoolId(){
-        return poolId;
-    }
 }

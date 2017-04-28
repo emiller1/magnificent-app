@@ -4,16 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoDevice;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserSession;
@@ -24,18 +21,6 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.Forg
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.MultiFactorAuthenticationContinuation;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.AuthenticationHandler;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.ForgotPasswordHandler;
-
-import com.amazonaws.regions.Regions;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import umbc.edu.helpers.AppHelper;
 
@@ -51,42 +36,16 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     String user, pass;
 
     EditText username, password;
-    Button login_button;
+    Button login_button, facebook_button;
     TextView createAccount_button, forgotPassword;
-    CallbackManager callbackManager;
+
     private ForgotPasswordContinuation forgotPasswordContinuation;
-    protected static CognitoCachingCredentialsProvider credentialsProvider = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.w(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(R.id.facebooklogin_button);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d("****YEA***",loginResult.toString());
-                Map<String, String> logins = new HashMap<String, String>();
-                logins.put("graph.facebook.com", AccessToken.getCurrentAccessToken().getToken());
-                credentialsProvider = new CognitoCachingCredentialsProvider(getBaseContext(), AppHelper.getPoolId(),
-                        Regions.US_EAST_1);
-                credentialsProvider.setLogins(logins);
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d("****YEA***",error.toString());
-            }
-        });
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -96,6 +55,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
         //Create Buttons
         login_button = (Button) findViewById(R.id.signIn_button);
+        facebook_button = (Button) findViewById(R.id.facebook_button);
 
         //Create TextViews
         createAccount_button = (TextView) findViewById(R.id.createAccount_button);
@@ -105,6 +65,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         login_button.setOnClickListener(this);
         createAccount_button.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
+        facebook_button.setOnClickListener(this);
     }
 
     @Override
@@ -164,6 +125,11 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(this, "Please Enter Your Username", Toast.LENGTH_LONG).show();
                 }
                 break;
+            case R.id.facebook_button:
+                //TODO: implement for facebook
+                fragment.show(getSupportFragmentManager(), "Login with Facebook");
+                break;
+
         }
     }
     AuthenticationHandler authenticationHandler = new AuthenticationHandler() {
@@ -261,9 +227,6 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
                 forgotPasswordContinuation.setVerificationCode(code);
                 forgotPasswordContinuation.continueTask();
             }
-        }else{
-            Log.d("FaceBook Result", String.valueOf(requestCode));
-            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
