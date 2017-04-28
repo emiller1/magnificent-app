@@ -61,7 +61,8 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                     setResult(RESULT_OK, intent);
                     finish();
                 }
-                Toast.makeText(this, "Please enter password and code", Toast.LENGTH_LONG).show();
+                //TODO: make errors look nice and more helpful if possible (FAILURE FOR GOTPASSWORD => username does not exist)
+                Toast.makeText(this, "Password has been reset", Toast.LENGTH_LONG).show();
                 break;
         }
     }
