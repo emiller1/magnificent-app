@@ -1,4 +1,14 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">Watcha</string>
+    <string-array name="spinner_list">
+        <item>Add to</item>
+        <item>Currently Watching</item>
+        <item>Plan to Watch</item>
+        <item>On Hold</item>
+        <item>Favorites</item>
+        <item>Dropped</item>
+    </string-array>
+
+    
     <string name="facebook_app_id">1808678002784790</string>
 </resources>
