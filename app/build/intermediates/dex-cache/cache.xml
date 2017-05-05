@@ -2,67 +2,229 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\libs\aws-android-sdk-cognitoidentityprovider-2.4.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/600a2702bc47ad9c84baaa37634f376667d22eda/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="59baa97d590a731f3a29f18072f67f30173f2dc9">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-cognitoidentityprovider-2.4.1_cd739db15718f5008359b90cf6cca419809e8040\classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_deef437b7f1aa44eb291ad227f888581c864b5d3.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\Programs\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_40ea0587cf6340d4e12beb197e9d7335f052e546.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_89d548e5fbe6bae11db25d992e34c64b4cb3a188\classes.dex" />
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_72422dc18f8eaf0e00245c041116b5fc1c7ed8e7.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\libs\aws-android-sdk-ddb-2.4.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="e71ce61ed5b00b2df6f221fc253fc84e0f5b0088">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-ddb-2.4.1_38d807e7cd18017df870e72e88e293218a95de59\classes.dex" />
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/support-annotations-25.0.0_9f113eb05e947d467c530d5fec9069d9153a487e.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/3c7891ee94f97f3da18033d88626e514647df553/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_555cf060fcbaa3091f1226c77004465f71071f18\classes.dex" />
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_97f461120b17d9de4a464ae796feb30e170b8bf2.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\libs\aws-android-sdk-core-2.4.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/58e349726687d220de49c84347636a21ee94acad/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="352fe9602022d6a1235dcaa9aa0fdd5e0195d74d">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-core-2.4.1_b4c1d5dd6b0f79e2bb7025233ff2b549604324f3\classes.dex" />
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_962adeb4ef53d8d8ffead4a2478234614a39efce.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\Bharath\.android\build-cache\eaf687aaf4ff7e36e75735d47fca34302eba8da9\output\jars\classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/75f0f608b8dabf5f71aca150358f017e5965eb70/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_00f95302b0c731d355a612464e22643e34982a9f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/89df21303627f68cdfe40cb1ad304a3e58f3c00e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_dd8955852827c1cbf94bd24d850e3f297635c28b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/f3c0ef87595b51251ef396882f66505300cefc63/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_670af8dd234bf9f3a12b9414a3f1e63188f9ce12\classes.dex" />
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_5cb1d56c8a88c51c6a17937ce11091bc1ad6b406.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/ec8d3f5258d621b5e50dea176c7c3573995ef349/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="5173707e1f10c627230dcd8535098c1c10034874">
-        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6369494811f6bd2a35ad87873595793b936d9b6e\classes.dex" />
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_98750fefbb97f8a28f2022c26e9c09b6f9460eda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/89df21303627f68cdfe40cb1ad304a3e58f3c00e/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_74b6b8b6f9d71217a49448c7bcebeaa1d7922d9c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/34dec840712c2069ba074efe23ad20b6497a0530/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_7177557813dc5f8296544b152a6a91c9c2e3e7ef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_c9daac039b65c7a8b6aca24a5763094e626c7b97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/874ce26a0279d59e3945a8e1e409d4f2305c0333/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_fa3890e906266d509b1a9dfe967a801dd500815e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/75f0f608b8dabf5f71aca150358f017e5965eb70/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_a7252f7e9ca65590bd09f886dd3e4007d69b13cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/17363ccdbca48e36814fc4949fa22686219b57c0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_7bfab7d9504497599d6c3635b3ae481bbacadf27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/34dec840712c2069ba074efe23ad20b6497a0530/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_83b90a541e59f474ceb7d40945e093f6f8e2b563.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0_c3cb5770c494cb5dca73aeaee5ddf821d2f456a2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d94c39080a309d1887f50ef68cc96dfe4bc9d01">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_69759f54b25c13690999999224a135526cd8ca3e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/libs/aws-android-sdk-core-2.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="352fe9602022d6a1235dcaa9aa0fdd5e0195d74d">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/aws-android-sdk-core-2.4.1_47ae1c0794b81660e69ac10ecf3c05bf699512cb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/17363ccdbca48e36814fc4949fa22686219b57c0/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_2b669794746245a4626e15a424bbaeb054e223e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/55ce083f56214709ac57df4fb8b360b4c15d14cd/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/classes_8f0a165b3be6bc9a04a443eff376ee4df3735680.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/libs/aws-android-sdk-ddb-2.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e71ce61ed5b00b2df6f221fc253fc84e0f5b0088">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/aws-android-sdk-ddb-2.4.1_c9fda702850deb87cae45359596b5be61f439933.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/.android/build-cache/ec8d3f5258d621b5e50dea176c7c3573995ef349/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_8ed5c4abacc9fd721607cd78558f54a3a80270e1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/libs/aws-android-sdk-cognitoidentityprovider-2.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="59baa97d590a731f3a29f18072f67f30173f2dc9">
+        <dex dex="/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognitoidentityprovider-2.4.1_869306611a5d73423b368e9d77bad135263baf80.jar" />
     </item>
 
 </items>

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Courses\\MobileComputing\\Project2\\magnificent-app\\app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it\\values-it.xml",
+        "outputFile": "/Users/milleej1/Desktop/untitled folder/magnificent-app/app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 159
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 267
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 390
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 490
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 599
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 683
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -125,7 +125,7 @@
                     "endOffset": 792
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -144,7 +144,7 @@
                     "endOffset": 917
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -163,7 +163,7 @@
                     "endOffset": 994
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -182,7 +182,7 @@
                     "endOffset": 1070
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -201,7 +201,7 @@
                     "endOffset": 1151
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -220,7 +220,7 @@
                     "endOffset": 1257
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -239,7 +239,7 @@
                     "endOffset": 1365
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -258,7 +258,7 @@
                     "endOffset": 1463
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -277,7 +277,7 @@
                     "endOffset": 1567
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -296,7 +296,7 @@
                     "endOffset": 1672
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -315,7 +315,7 @@
                     "endOffset": 1779
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -334,7 +334,7 @@
                     "endOffset": 1901
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -353,7 +353,7 @@
                     "endOffset": 2001
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -372,7 +372,7 @@
                     "endOffset": 2145
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -392,7 +392,7 @@
                     "endOffset": 2281
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -413,7 +413,7 @@
                     "endOffset": 2423
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -433,7 +433,7 @@
                     "endOffset": 2518
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -452,7 +452,7 @@
                     "endOffset": 2586
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -471,7 +471,7 @@
                     "endOffset": 2658
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -490,7 +490,7 @@
                     "endOffset": 2720
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -509,7 +509,7 @@
                     "endOffset": 2793
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -528,7 +528,7 @@
                     "endOffset": 2865
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -547,7 +547,7 @@
                     "endOffset": 2961
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -566,7 +566,7 @@
                     "endOffset": 3051
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -585,7 +585,7 @@
                     "endOffset": 3122
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -604,7 +604,7 @@
                     "endOffset": 3193
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -623,7 +623,7 @@
                     "endOffset": 3287
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -642,7 +642,7 @@
                     "endOffset": 3395
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -661,7 +661,7 @@
                     "endOffset": 3459
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -680,7 +680,7 @@
                     "endOffset": 3528
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -699,7 +699,7 @@
                     "endOffset": 3703
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -718,7 +718,7 @@
                     "endOffset": 3784
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -737,7 +737,7 @@
                     "endOffset": 3869
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -756,7 +756,7 @@
                     "endOffset": 3961
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -775,7 +775,7 @@
                     "endOffset": 4099
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 25,
                         "startColumn": 4,
@@ -794,7 +794,7 @@
                     "endOffset": 4160
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\f9a88c7c2dbcf817a338c78f15e488cc23aa6d9b\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/2392e19de82dcf9efb12124631d5c88c17c091d2/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
@@ -813,7 +813,7 @@
                     "endOffset": 4243
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -832,7 +832,7 @@
                     "endOffset": 4344
                 },
                 "from": {
-                    "file": "C:\\Users\\Bharath\\.android\\build-cache\\7b6da9a58ede8d7c692a49d04d7efa2fad040774\\output\\res\\values-it\\values-it.xml",
+                    "file": "/Users/milleej1/.android/build-cache/b08066dbce5bfa444be0de18e2d5c8b2fa015261/output/res/values-it/values-it.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
