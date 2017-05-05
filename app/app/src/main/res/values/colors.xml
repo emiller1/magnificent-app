@@ -11,4 +11,7 @@
     <color name="goldObject">#ff9f2e</color>
     <color name="goldText">#ffbd6f</color>
     <color name="whiteText">#dadada</color>
+    <color name="appYellow">#ff9f2e</color>
+    <color name="appBlueMain">#1d0b33</color>
+    <color name="appYellowLight">#ffbd6f</color>
 </resources>

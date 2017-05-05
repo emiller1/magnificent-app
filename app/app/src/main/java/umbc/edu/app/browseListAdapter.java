@@ -38,12 +38,14 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
 
     private List<GuideBoxService.Result> dataSet;
     private List<Bitmap> imageList;
+    private List<String> descriptionList;
     Context mContext;
-    public browseListAdapter(List<GuideBoxService.Result> data, List<Bitmap> browseImages, Context context) {
+    public browseListAdapter(List<GuideBoxService.Result> data, List<Bitmap> browseImages, List<String> browseDescription, Context context) {
         super(context, R.layout.list_item, data);
         this.dataSet = data;
         this.mContext = context;
         this.imageList = browseImages;
+        this.descriptionList = browseDescription;
     }
     public View getView(int position, View convertView, ViewGroup parent){
         GuideBoxService.Result tempResult  = getItem(position);
@@ -67,7 +69,7 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
 
         Log.d("in adapter", String.valueOf(position));
         viewHolder.title.setText(tempResult.getTitle());
-        viewHolder.description.setText("Temperory Description");
+        viewHolder.description.setText(descriptionList.get(position));
         //viewHolder.artWork.setImageResource(R.drawable.reasons_why_2);
         Bitmap mbitmap = imageList.get(position);
         Bitmap imageRounded = Bitmap.createBitmap(mbitmap.getWidth(), mbitmap.getHeight(), mbitmap.getConfig());
@@ -80,8 +82,8 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
         canvas.drawRect((new RectF(0, 0, mbitmap.getWidth(), mbitmap.getHeight()-roundPx)), mpaint);
         canvas.drawRoundRect((new RectF(0, 0, mbitmap.getWidth(), mbitmap.getHeight())), roundPx, roundPx, mpaint);// Round Image Corner 100 100 100 100
         viewHolder.artWork.setImageBitmap(imageRounded);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_list, R.layout.spinner_list);
+        adapter.setDropDownViewResource(R.layout.spinner_drop_down);
         viewHolder.statusSpinner.setAdapter(adapter);
         //viewHolder.artWork.setImageBitmap(imageList.get(position));
         return convertView;

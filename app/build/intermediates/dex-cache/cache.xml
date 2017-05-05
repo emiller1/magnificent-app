@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="D:\Programs\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_89d548e5fbe6bae11db25d992e34c64b4cb3a188\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\libs\aws-android-sdk-ddb-2.4.1.jar"
         jumboMode="true"
         optimize="true"
@@ -39,11 +48,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Bharath\.android\build-cache\eaf687aaf4ff7e36e75735d47fca34302eba8da9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_670af8dd234bf9f3a12b9414a3f1e63188f9ce12\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="8af4cee3e48ae6637a94ad4c8bd048f03dddad69">
+        sha1="5173707e1f10c627230dcd8535098c1c10034874">
         <dex dex="D:\Courses\MobileComputing\Project2\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6369494811f6bd2a35ad87873595793b936d9b6e\classes.dex" />
     </item>
 

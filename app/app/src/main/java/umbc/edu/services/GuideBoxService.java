@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.Parcelable;
 import android.util.JsonReader;
 import android.util.Log;
 
@@ -22,9 +23,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 //import java.nio.channels.AsynchronousCloseException;
@@ -36,7 +39,7 @@ import java.util.List;
  * @author elishiah miller
  * Created 3/17/17
  */
-public class GuideBoxService extends Service{
+public class GuideBoxService extends Service implements Serializable{
 
     String TAG = "GuideBoxService";
     final private String api_key = "8c6513c863495b95018e7ba2aa2ce49360dc418f";
@@ -48,7 +51,8 @@ public class GuideBoxService extends Service{
     long browse_total_results, browse_total_returned;
     Result search_Result;
     List<Result> final_result = null;
-    List<Bitmap> artWorkList = new ArrayList<Bitmap>();
+    transient List<Bitmap> artWorkList;
+    List<String> descrList;
     public List<Result> browseGuideboxService() {
         return final_result;
     }
@@ -59,11 +63,11 @@ public class GuideBoxService extends Service{
         new guideboxAsyncTask().execute(input);
     }
 
-    public Result searchGuideboxService(String _type, String term) {
+    public Result searchGuideboxService(String value, String term) {
         String[] input = new String[3];
         input[0] = "search";
-        input[1] = _type; // Elsie can send _type = "id" and Bharadwaz can send _type = "name"
-        input[2] = term; // if _type = "id" term = value of id and if _type = "name" term = show name
+        input[1] = value;
+        input[2] = term;
         new guideboxAsyncTask().execute(input);
         return search_Result;
     }
@@ -72,26 +76,35 @@ public class GuideBoxService extends Service{
         return artWorkList;
     }
 
+    public List<String> getDescrList(){ return descrList;}
 
-    public class guideboxAsyncTask extends AsyncTask<String, Void, List<Result>> {
+    public class guideboxAsyncTask extends AsyncTask<String, Void, Integer> {
 
         @Override
-        protected List<Result> doInBackground(String... params) {
-            if (params[0] == "browse") {
-                URL url;
+        protected Integer doInBackground(String... params) {
+            descrList = new ArrayList<>();
+            artWorkList = new ArrayList<>();
+                URL url = null;
                 HttpURLConnection urlConnection = null;
                 HttpURLConnection imgurlConnection = null;
                 HttpURLConnection descriptionConnection = null;
                 try {
-                    url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
-                    urlConnection = (HttpURLConnection) url.openConnection();
-                    Log.d("jsonData", "hi");
-                    InputStream in = urlConnection.getInputStream();
-                    Log.d("in async task", "no");
-                    final_result = readJsonStream(in);
-                    Log.d("finalresult count", String.valueOf(final_result.size()));
-                    Log.d("total results", String.valueOf(browse_total_results));
-                    Log.d("total returned", String.valueOf(browse_total_returned));
+                    if((params[0] == "browse")|| (params[2] =="title")) {
+                        if (params[0] == "browse") {
+                            url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
+                        } else if (params[2] == "title" ) {
+
+                            String testURL = URLEncoder.encode(params[1],"UTF-8");
+                            url = new URL("http://api-public.guidebox.com/v2/search?api_key="+api_key+"&type=show&field=title&query="+testURL);
+                        }
+                        urlConnection = (HttpURLConnection) url.openConnection();
+                        InputStream in = urlConnection.getInputStream();
+                        final_result = readJsonStream(in);
+                        Log.d("finalresult count", String.valueOf(final_result.size()));
+                        Log.d("total results", String.valueOf(browse_total_results));
+                        Log.d("total returned", String.valueOf(browse_total_returned));
+
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -113,13 +126,26 @@ public class GuideBoxService extends Service{
                     }
                     for (Result descriptionResult: final_result)
                     {
-                        URL temURL= null;
+                        URL tempURL= null;
+                        String tempDescr;
+                        try {
+                            Log.d("id",String.valueOf(descriptionResult.id));
+                            tempURL = new URL("http://api-public.guidebox.com/v2/shows/"+descriptionResult.id+"?api_key="+api_key);
+
+                            descriptionConnection = (HttpURLConnection) tempURL.openConnection();
+                            InputStream in = descriptionConnection.getInputStream();
+                            tempDescr = readdescriptionJsonStream(in);
+                            Log.d("description",tempDescr);
+                            descrList.add(tempDescr);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
 
                     }
                 }
-            } else if (params[0] == "search") {
-                URL url = null;
+
+                /*URL url = null;
                 HttpURLConnection urlConnection = null;
 
                 if (params[1] == "id") {
@@ -130,7 +156,7 @@ public class GuideBoxService extends Service{
                     }
                 } else if (params[1] == "name") {
                     try {
-                        url = new URL("http://api-public.guidebox.com/v2/search?api_key=YOUR_API_KEY&type=movie&field=title&query=Terminator");
+                        url = new URL("http://api-public.guidebox.com/v2/search?api_key="+api_key+"&type=movie&field=title&query=Terminator");
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
@@ -145,24 +171,33 @@ public class GuideBoxService extends Service{
                     e.printStackTrace();
                 } finally {
                     urlConnection.disconnect();
-                }
+                }*/
 
+            if (params[0] == "browse") {
+                return 1;
+            }else{
+                return 0;
             }
 
-            return null;
         }
 
         @Override
-        protected void onPostExecute(List<Result> results) {
-            super.onPostExecute(results);
+        protected void onPostExecute(Integer x) {
+            super.onPostExecute(x);
             Log.d("in guideboxservice", String.valueOf(artWorkList.size()));
+
             Intent myIntent = new Intent();
-            myIntent.setAction("BrowseDone");
+            if(x==1) {
+                myIntent.setAction("BrowseDone");
+            }
+            else if(x==0){
+                myIntent.setAction("SearchDone");
+            }
             getBaseContext().sendBroadcast(myIntent);
         }
     }
 
-    public class Result {
+    public class Result implements Serializable{
         public Result(List<Result> result_list) {
             this.result_list = result_list;
         }
@@ -173,7 +208,7 @@ public class GuideBoxService extends Service{
  //       String artwork_304x171;
         String artwork_448x252;
  //       String artwork_608x342;
-        List<Result> result_list = new ArrayList<Result>();
+        List<Result> result_list = new ArrayList<>();
 
         public Result(long id, String title,String imgurl) {
             this.id = id;
@@ -187,6 +222,9 @@ public class GuideBoxService extends Service{
         public String getTitle(){
             return this.title;
         }
+
+        public String getArtwork() { return this.artwork_448x252;
+        }
     }
 
     public List<Result> readJsonStream(InputStream in) throws IOException {
@@ -199,6 +237,33 @@ public class GuideBoxService extends Service{
         }
     }
 
+    public String readdescriptionJsonStream(InputStream in) throws IOException {
+        Log.d("readdescriptionStream", "hi");
+        String descr = "Description could not be loaded";
+        JsonReader reader = new JsonReader(new InputStreamReader(in));
+        try {
+            reader.beginObject();
+            while (reader.hasNext()){
+                String message = reader.nextName();
+                if(message.equals("overview")){
+                    descr = reader.nextString();
+                    Log.d("description",descr);
+
+                }
+                else{
+                    reader.skipValue();
+                }
+            }
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally{
+            reader.endObject();
+            reader.close();
+        }
+        return descr;
+    }
+
     public List<Result> readMessagesObject(JsonReader reader) throws IOException {
         // List<Result> messages = new ArrayList<Result>();
         List<Result> result_list = new ArrayList<Result>();
@@ -208,12 +273,12 @@ public class GuideBoxService extends Service{
         while (reader.hasNext()) {
             Log.d("in readMessage hasNext", "hi");
             String message = reader.nextName();
-            if (message.equals("total_results")) {
+           /* if (message.equals("total_results")) {
                 browse_total_results = reader.nextLong();
                 Log.d("readMessa total_results", String.valueOf(browse_total_results));
             } else if (message.equals("total_returned")) {
                 browse_total_returned = reader.nextLong();
-            } else if (message.equals("results")) {
+            } else*/ if (message.equals("results")) {
                 result_list = readResultArray(reader);
             } else {
                 reader.skipValue();
@@ -263,7 +328,7 @@ public class GuideBoxService extends Service{
     /**
      * Class used for the client Binder.
      */
-    public class LocalBinder extends Binder {
+    public class LocalBinder extends Binder implements Serializable {
         public GuideBoxService getService() {
             // Return this instance of LocalService so clients can call public methods
             return GuideBoxService.this;
