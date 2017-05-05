@@ -2,6 +2,7 @@ package umbc.edu.app;
 
 
 import android.annotation.TargetApi;
+import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -13,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.Parcelable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
@@ -24,13 +26,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,22 +55,27 @@ import umbc.edu.services.GuideBoxService;
  *
  * Note: This Activity should bind to the GuideBox service and unbind when it is done
  */
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,Serializable{
 
     String TAG = "HomeActivity";
     protected String tag = "HomeActivity";
 
     GuideBoxService myservice;
     DrawerLayout myDrawer;
-    FrameLayout content_layout;
+    static FrameLayout content_layout;
     Toolbar myToolbar;
     IntentFilter browseIntentFilter;
     List<GuideBoxService.Result> browseList = new ArrayList<GuideBoxService.Result>();
     List<Bitmap> browseImages = new ArrayList<Bitmap>();
-    private static browseListAdapter adapter;
-    ListView browserListView;
+     static browseListAdapter adapter;
+
+    static ListView browserListView;
     ListView drawerListView;
+    List<Bitmap> searchImages = new ArrayList<>();
+    List<String> browseDescription = new ArrayList<>();
+    List<String> searchDescription = new ArrayList<>();
     List<String> drawerList = new ArrayList<String>();
+    List<GuideBoxService.Result> searchList = new ArrayList<GuideBoxService.Result>();
     Spinner mySpinner;
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
    // private GuideBoxService guideBoxService;
@@ -75,53 +86,85 @@ public class HomeActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         Log.w(tag, "onCreate()");
         setContentView(R.layout.activity_home);
-        Intent guideboxIntent = new Intent(this,GuideBoxService.class);
-        bindService(guideboxIntent,mConnection, Context.BIND_AUTO_CREATE);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(myToolbar);
         myToolbar.setTitleTextColor(Color.rgb(255,189,111));
+        Intent guideboxIntent = new Intent(this,GuideBoxService.class);
         myDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         content_layout = (FrameLayout) findViewById(R.id.content_frame);
         browserListView = (ListView) findViewById(R.id.browse_list_view);
-
-
         drawerListView = (ListView) findViewById(R.id.left_drawer);
-        drawerList.add("Profile");
-        drawerList.add("My Profile");
-        drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
+        drawerList.add("My Lists");
+        drawerList.add("Browse");
+        drawerList.add("Log Out");
+       drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
         browseIntentFilter = new IntentFilter();
         browseIntentFilter.addAction("BrowseDone");
-        registerReceiver(bintentReceiver, browseIntentFilter);
+        browseIntentFilter.addAction("SearchDone");
+        bindService(guideboxIntent,mConnection, Context.BIND_AUTO_CREATE);
     }
     private BroadcastReceiver bintentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+
             String action = intent.getAction();
+            Log.d("in Intent receiver",action);
             switch (action) {
                 case "BrowseDone":
                     browseList = myservice.browseGuideboxService();
                     browseImages = myservice.getBrowseImages();
-
+                    browseDescription = myservice.getDescrList();
                     for (int i = 0; i < browseList.size(); i++) {
                         Log.d("TitleMainActivity", String.valueOf(i + 1) + browseList.get(i).getTitle());
                     }
-                    adapter = new browseListAdapter(browseList,browseImages,getApplicationContext());
+                    adapter = new browseListAdapter(browseList,browseImages,browseDescription,getApplicationContext());
                     browserListView.setAdapter(adapter);
+                    browserListView.setOnItemClickListener(HomeActivity.this);
                     break;
+                case "SearchDone":
+                   try {
 
+
+                       Log.d("in Intent Receiver", "SearchDone");
+                       searchList = myservice.browseGuideboxService();
+                       searchImages = myservice.getBrowseImages();
+                       searchDescription = myservice.getDescrList();
+                       Intent searchIntent = new Intent(getApplicationContext(), searchResults.class);
+                       searchIntent.putExtra("search_list", new DataWrapper((ArrayList<GuideBoxService.Result>) searchList));
+                       //searchIntent.putParcelableArrayListExtra("image_list", (ArrayList<Bitmap>) searchImages);
+                       searchIntent.putStringArrayListExtra("description_list", (ArrayList<String>) searchDescription);
+
+
+                       startActivity(searchIntent);
+                       // search_adapter = new browseListAdapter(searchList,searchImages,searchDescription,getApplicationContext());
+                       //browserListView.setAdapter(search_adapter);
+                       break;
+                   }catch (Exception e){
+                       e.printStackTrace();
+                   }
             }
         }
     };
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.actionbar, menu);
-     /*   SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
-*/
+        //SearchManager searchManager =
+        //        (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+      //searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getApplicationContext(),"in onquerysubmit",Toast.LENGTH_LONG).show();
+                myservice.searchGuideboxService(query,"title");
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         return true;
     }
 
@@ -130,9 +173,20 @@ public class HomeActivity extends AppCompatActivity{
             case R.id.action_openRight:
                 myDrawer.openDrawer(GravityCompat.END);
                 return true;
+            case R.id.action_search:
+                onSearchRequested();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(bintentReceiver);
+        Log.d("tag", "onPause()");
     }
 
     ServiceConnection mConnection = new ServiceConnection() {
@@ -142,7 +196,7 @@ public class HomeActivity extends AppCompatActivity{
             Log.d("hi","in mConnection");
             myservice = binder.getService();
             myservice.startGuideboxservice();
-            }
+        }
 
 
         @Override
@@ -150,28 +204,26 @@ public class HomeActivity extends AppCompatActivity{
 
         }
     };
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.w(tag, "onPause()");
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.w(tag, "onResume()");
+
+
+        registerReceiver(bintentReceiver, browseIntentFilter);
+        Log.d("tag", "onResume()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.w(tag, "onDestroy()");
+        Log.d("tag", "onDestroy()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.w(tag, "onStart()");
+        Log.d("tag", "onStart()");
         //Intent intenet = new Intent(this, GuideBoxService.class);
         //bindService(intenet,connection, Context.BIND_AUTO_CREATE);
     }
@@ -179,7 +231,14 @@ public class HomeActivity extends AppCompatActivity{
     @Override
     protected void onStop() {
         super.onStop();
-        Log.w(tag, "onStop()");
+ //       unregisterReceiver(bintentReceiver);
+        Log.w("tag", "onStop()");
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String title = browseList.get(position).getTitle();
+        Toast.makeText(getApplicationContext(),title,Toast.LENGTH_LONG).show();
     }
 /*
     private ServiceConnection connection = new ServiceConnection() {
