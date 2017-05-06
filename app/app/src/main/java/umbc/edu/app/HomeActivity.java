@@ -97,7 +97,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         drawerList.add("My Lists");
         drawerList.add("Browse");
         drawerList.add("Log Out");
-       drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
+        drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
         browseIntentFilter = new IntentFilter();
         browseIntentFilter.addAction("BrowseDone");
         browseIntentFilter.addAction("SearchDone");
