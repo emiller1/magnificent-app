@@ -105,6 +105,13 @@ public class GuideBoxService extends Service implements Serializable{
                         Log.d("total returned", String.valueOf(browse_total_returned));
 
                     }
+                    else if(params[2] == "imdbid"){
+                        url = new URL("http://api-public.guidebox.com/v2/search?api_key="+api_key+"&type=show&field=id&id_type=imdb&query="+params[1]);
+                        urlConnection = (HttpURLConnection) url.openConnection();
+                        InputStream in = urlConnection.getInputStream();
+                        JsonReader search_reader = new JsonReader(new InputStreamReader(in));
+                        final_result.add(readResult(search_reader));
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -207,13 +214,15 @@ public class GuideBoxService extends Service implements Serializable{
  //       String artwork_208x117;
  //       String artwork_304x171;
         String artwork_448x252;
+        String imdb_id;
  //       String artwork_608x342;
         List<Result> result_list = new ArrayList<>();
 
-        public Result(long id, String title,String imgurl) {
+        public Result(long id, String title,String imgurl, String imdb_id) {
             this.id = id;
             this.title = title;
             this.artwork_448x252 = imgurl;
+            this.imdb_id = imdb_id;
         }
 
 
@@ -225,6 +234,10 @@ public class GuideBoxService extends Service implements Serializable{
 
         public String getArtwork() { return this.artwork_448x252;
         }
+
+        public String getImdbID() { return this.imdb_id;
+        }
+        public long getId(){ return this.id;}
     }
 
     public List<Result> readJsonStream(InputStream in) throws IOException {
@@ -305,6 +318,7 @@ public class GuideBoxService extends Service implements Serializable{
         long id = 0;
         String title = "";
         String imgurl = "";
+        String imdb_id="";
         while (reader.hasNext()) {
             String name = reader.nextName();
             if (name.equals("id")) {
@@ -312,14 +326,17 @@ public class GuideBoxService extends Service implements Serializable{
             } else if (name.equals("title")) {
                 title = reader.nextString();
 
-            }else if(name.equals("artwork_448x252")){
+            }else if(name.equals("imdb_id")){
+                imdb_id = reader.nextString();
+            }
+            else if(name.equals("artwork_448x252")){
                 imgurl = reader.nextString();
             } else{
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new Result(id, title,imgurl);
+        return new Result(id, title,imgurl, imdb_id);
     }
 
    // public GuideBoxService() {}
