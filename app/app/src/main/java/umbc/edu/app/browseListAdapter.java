@@ -13,15 +13,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import umbc.edu.services.GuideBoxService;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by Bharath on 4/25/2017.
@@ -39,7 +43,11 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
     private List<GuideBoxService.Result> dataSet;
     private List<Bitmap> imageList;
     private List<String> descriptionList;
+   // List<Integer> prevPosition = new ArrayList<>();
+    int[] prevPosition = new int[25];
+
     Context mContext;
+
     public browseListAdapter(List<GuideBoxService.Result> data, List<Bitmap> browseImages, List<String> browseDescription, Context context) {
         super(context, R.layout.list_item, data);
         this.dataSet = data;
@@ -47,7 +55,7 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
         this.imageList = browseImages;
         this.descriptionList = browseDescription;
     }
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(final int position, View convertView, ViewGroup parent){
         GuideBoxService.Result tempResult  = getItem(position);
         ViewHolder viewHolder;
         final View result;
@@ -85,7 +93,24 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_list, R.layout.spinner_list);
         adapter.setDropDownViewResource(R.layout.spinner_drop_down);
         viewHolder.statusSpinner.setAdapter(adapter);
-        //viewHolder.artWork.setImageBitmap(imageList.get(position));
+
+        viewHolder.statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                prevPosition[position] = pos;
+               // Toast.makeText(getApplicationContext(),parent.getItemAtPosition(pos).toString(),Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+            viewHolder.statusSpinner.setSelection(prevPosition[position]);
+
+            //viewHolder.artWork.setImageBitmap(imageList.get(position));
         return convertView;
     }
 }

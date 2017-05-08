@@ -12,7 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -50,6 +53,13 @@ public class searchResults extends HomeActivity {
         //searchDescription = (ArrayList<String>)myIntent.getStringArrayListExtra("description_list");
         //search_adapter = new browseListAdapter(searchList,searchImages,searchDescription,getApplicationContext());
         //HomeActivity.browserListView.setAdapter(search_adapter);
+        searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String title = searchList.get(position).getTitle();
+                Toast.makeText(getApplicationContext(),title,Toast.LENGTH_LONG).show();
+            }
+        });
         for(int i=0;i<searchList.size();i++){
             Log.d("searchresultsactivity2",searchList.get(i).getTitle());
             Log.d("imageurlactivity2",searchList.get(i).getArtwork());
