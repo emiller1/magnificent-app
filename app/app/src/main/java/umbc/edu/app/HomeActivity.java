@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -56,6 +57,11 @@ import umbc.edu.services.GuideBoxService;
  * Note: This Activity should bind to the GuideBox service and unbind when it is done
  */
 public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,Serializable{
+
+    ArrayList<SharedPreferences> prefs = new ArrayList<SharedPreferences>();
+    private static final String WATCHING = "WATCHING" ;
+    private static final String COMPLETED = "COMPLETED" ;
+
 
     String TAG = "HomeActivity";
     protected String tag = "HomeActivity";
@@ -134,7 +140,9 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
                     for (int i = 0; i < browseList.size(); i++) {
                         Log.d("TitleMainActivity", String.valueOf(i + 1) + browseList.get(i).getTitle());
                     }
-                    adapter = new browseListAdapter(browseList,browseImages,browseDescription,getApplicationContext());
+                    prefs.add(getSharedPreferences(WATCHING,MODE_PRIVATE));
+                    prefs.add(getSharedPreferences(COMPLETED,MODE_PRIVATE));
+                    adapter = new browseListAdapter(browseList,browseImages,browseDescription,getApplicationContext(), prefs);
                     browserListView.setAdapter(adapter);
                     browserListView.setOnItemClickListener(HomeActivity.this);
                     break;

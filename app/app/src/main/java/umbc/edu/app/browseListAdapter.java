@@ -1,6 +1,7 @@
 package umbc.edu.app;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -33,6 +34,8 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
 
+    private ArrayList<SharedPreferences> prefs;
+
     private static class ViewHolder {
         TextView title;
         TextView description;
@@ -48,14 +51,16 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
 
     Context mContext;
 
-    public browseListAdapter(List<GuideBoxService.Result> data, List<Bitmap> browseImages, List<String> browseDescription, Context context) {
+    public browseListAdapter(List<GuideBoxService.Result> data, List<Bitmap> browseImages, List<String> browseDescription, Context context, ArrayList<SharedPreferences> prefs) {
         super(context, R.layout.list_item, data);
         this.dataSet = data;
         this.mContext = context;
         this.imageList = browseImages;
         this.descriptionList = browseDescription;
+        this.prefs = prefs;
     }
     public View getView(final int position, View convertView, ViewGroup parent){
+
         GuideBoxService.Result tempResult  = getItem(position);
         ViewHolder viewHolder;
         final View result;
@@ -98,6 +103,26 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 prevPosition[position] = pos;
+
+                //TODO: pos gives you the button value
+                //0 -> ADD_TO main button
+                //1 -> WATCHING
+                //2 -> COMPLETED
+
+                SharedPreferences.Editor editor;
+
+                if(pos==1){
+                    editor = prefs.get(0).edit();
+                }else if(pos==2){
+                    editor = prefs.get(1).edit();
+                }
+
+                //TODO:
+                //editor.putString("IMDB_ID", "IMDB_ID");
+                //editor.commit();
+
+                //prefs.get(0).getAll();
+
                // Toast.makeText(getApplicationContext(),parent.getItemAtPosition(pos).toString(),Toast.LENGTH_LONG).show();
 
             }
