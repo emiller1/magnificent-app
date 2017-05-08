@@ -32,11 +32,11 @@ public class searchResults extends HomeActivity {
     private static browseListAdapter search_adapter;
     Intent myIntent;
     ListView searchListView;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //setContentView(R.layout.activity_search_results2);
         Log.d("in second oncreate","in second on create");
 
@@ -57,7 +57,9 @@ public class searchResults extends HomeActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String title = searchList.get(position).getTitle();
-                Toast.makeText(getApplicationContext(),title,Toast.LENGTH_LONG).show();
+                String imd_id = searchList.get(position).getImdbID();
+                long show_id = searchList.get(position).getId();
+                Toast.makeText(getApplicationContext(),title+" "+imd_id+" "+String.valueOf(show_id),Toast.LENGTH_LONG).show();
             }
         });
         for(int i=0;i<searchList.size();i++){
@@ -110,7 +112,7 @@ public class searchResults extends HomeActivity {
        //     ListView searchListView = (ListView) findViewById(R.id.browse_list_view);
            // ListView myListView = new ListView(getApplicationContext());
             searchDescription = (ArrayList<String>)myIntent.getStringArrayListExtra("description_list");
-            search_adapter = new browseListAdapter(searchList,artWorkList,searchDescription,getApplicationContext());
+            search_adapter = new browseListAdapter(searchList,artWorkList,searchDescription,getApplicationContext(),null);
             searchListView.setAdapter(search_adapter);
              //  HomeActivity.content_layout.addView(searchListView);
         }

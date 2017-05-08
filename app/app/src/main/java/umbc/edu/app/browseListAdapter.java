@@ -61,7 +61,7 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
     }
     public View getView(final int position, View convertView, ViewGroup parent){
 
-        GuideBoxService.Result tempResult  = getItem(position);
+        final GuideBoxService.Result tempResult  = getItem(position);
         ViewHolder viewHolder;
         final View result;
 
@@ -118,12 +118,13 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
                 }
 
                 //TODO:
+                // access to ImdbID - tempResult.getImdbID()
                 //editor.putString("IMDB_ID", "IMDB_ID");
                 //editor.commit();
 
                 //prefs.get(0).getAll();
 
-               // Toast.makeText(getApplicationContext(),parent.getItemAtPosition(pos).toString(),Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplicationContext(),tempResult.getImdbID(),Toast.LENGTH_LONG).show();
 
             }
 

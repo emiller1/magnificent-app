@@ -100,9 +100,11 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         content_layout = (FrameLayout) findViewById(R.id.content_frame);
         browserListView = (ListView) findViewById(R.id.browse_list_view);
         drawerListView = (ListView) findViewById(R.id.left_drawer);
-        drawerList.add("My Lists");
-        drawerList.add("Browse");
-        drawerList.add("Log Out");
+       // drawerList.add("My Lists");
+       // drawerList.add("Browse");
+       // drawerList.add("Log Out");
+        drawerList.add("Watching");
+        drawerList.add("Completed");
         drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
         drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -263,7 +265,9 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String title = browseList.get(position).getTitle();
-        Toast.makeText(getApplicationContext(),title,Toast.LENGTH_LONG).show();
+        String imdb_id = browseList.get(position).getImdbID();
+        long show_id = browseList.get(position).getId();
+        Toast.makeText(getApplicationContext(),title+" "+imdb_id+" "+String.valueOf(show_id),Toast.LENGTH_LONG).show();
     }
 /*
     private ServiceConnection connection = new ServiceConnection() {
