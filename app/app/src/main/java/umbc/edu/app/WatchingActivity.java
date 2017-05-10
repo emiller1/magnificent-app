@@ -1,6 +1,7 @@
 package umbc.edu.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,10 +35,13 @@ public class WatchingActivity extends HomeActivity {
     ArrayList<String> descrList = new ArrayList<String>();
     private ArrayList<SharedPreferences> prefs = new ArrayList<SharedPreferences>();
     ListView watchListView;
+    String userShowValue;
     private static browseListAdapter watch_List_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent myIntent = getIntent();
+        userShowValue = myIntent.getStringExtra("UserShow");
         HomeActivity.content_layout.removeAllViews();
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = (View) inflater.inflate(R.layout.activity_search_results2,null);
@@ -52,9 +56,14 @@ public class WatchingActivity extends HomeActivity {
                 Toast.makeText(getApplicationContext(),title+" "+imd_id+" "+String.valueOf(show_id),Toast.LENGTH_LONG).show();
             }
         });
+        SharedPreferences watchingSharedActivity = null;
+        if(userShowValue.equals("0")){
+        watchingSharedActivity = getSharedPreferences("WATCHING",MODE_PRIVATE);
+        }
+        else if(userShowValue.equals("1")){
+            watchingSharedActivity = getSharedPreferences("COMPLETED",MODE_PRIVATE);
+        }
 
-
-        SharedPreferences watchingSharedActivity = getSharedPreferences("WATCHING",MODE_PRIVATE);
         Map<String, ?> allEntries = watchingSharedActivity.getAll();
         try {
             for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
