@@ -58,7 +58,7 @@ import umbc.edu.services.GuideBoxService;
  */
 public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,Serializable{
 
-    ArrayList<SharedPreferences> prefs = new ArrayList<SharedPreferences>();
+    private ArrayList<SharedPreferences> prefs = new ArrayList<SharedPreferences>();
     private static final String WATCHING = "WATCHING" ;
     private static final String COMPLETED = "COMPLETED" ;
 
@@ -111,11 +111,15 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     Toast.makeText(getApplicationContext(), String.valueOf(position),Toast.LENGTH_LONG).show();
-                    //start appropriate activity
+                    Intent watchingShowIntent = new Intent(getApplicationContext(),WatchingActivity.class);
+                    watchingShowIntent.putExtra("UserShow","0");
+                    startActivity(watchingShowIntent);
                 }
                 else if(position ==1){
                     Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_LONG).show();
-                    //start appropriate activity
+                    Intent completedShowIntent = new Intent(getApplicationContext(),WatchingActivity.class);
+                    completedShowIntent.putExtra("UserShow","1");
+                    startActivity(completedShowIntent);
                 }
                 else if(position ==2){
                     Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_LONG).show();

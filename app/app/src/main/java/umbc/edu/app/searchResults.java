@@ -3,6 +3,7 @@ package umbc.edu.app;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -32,6 +33,7 @@ public class searchResults extends HomeActivity {
     private static browseListAdapter search_adapter;
     Intent myIntent;
     ListView searchListView;
+    private ArrayList<SharedPreferences> prefs = new ArrayList<SharedPreferences>();
 
     @Override
 
@@ -112,7 +114,9 @@ public class searchResults extends HomeActivity {
        //     ListView searchListView = (ListView) findViewById(R.id.browse_list_view);
            // ListView myListView = new ListView(getApplicationContext());
             searchDescription = (ArrayList<String>)myIntent.getStringArrayListExtra("description_list");
-            search_adapter = new browseListAdapter(searchList,artWorkList,searchDescription,getApplicationContext(),null);
+            prefs.add(getSharedPreferences("WATCHING",MODE_PRIVATE));
+            prefs.add(getSharedPreferences("COMPLETED",MODE_PRIVATE));
+            search_adapter = new browseListAdapter(searchList,artWorkList,searchDescription,getApplicationContext(),prefs);
             searchListView.setAdapter(search_adapter);
              //  HomeActivity.content_layout.addView(searchListView);
         }

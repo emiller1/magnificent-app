@@ -12,21 +12,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\Projects\MCProject\magnificent-app\app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="72a639a56d7958c1e38f02f68e9e098b5d7d59d8">
-        <dex dex="D:\Projects\MCProject\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8f7dcd9d80def044a71a9a70cb3ec9aa403a813f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="D:\Projects\MCProject\magnificent-app\app\app\libs\aws-android-sdk-core-2.4.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="352fe9602022d6a1235dcaa9aa0fdd5e0195d74d">
         <dex dex="D:\Projects\MCProject\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-core-2.4.1_ebd049fb6344c73e2e45057f3a666d7309d6c510\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Projects\MCProject\magnificent-app\app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9769460edeab34972cebf7bf2ae0b81d18d1fae6">
+        <dex dex="D:\Projects\MCProject\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8f7dcd9d80def044a71a9a70cb3ec9aa403a813f\classes.dex" />
     </item>
     <item
         is-multidex="true"

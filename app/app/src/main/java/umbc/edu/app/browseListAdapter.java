@@ -102,7 +102,7 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
         viewHolder.statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                prevPosition[position] = pos;
+                //prevPosition[position] = pos;
 
                 //TODO: pos gives you the button value
                 //0 -> ADD_TO main button
@@ -113,8 +113,12 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
 
                 if(pos==1){
                     editor = prefs.get(0).edit();
+                    editor.putString(tempResult.getImdbID(), tempResult.getImdbID());
+                    editor.commit();
                 }else if(pos==2){
                     editor = prefs.get(1).edit();
+                    editor.putString(tempResult.getImdbID(), tempResult.getImdbID());
+                    editor.commit();
                 }
 
                 //TODO:
@@ -133,6 +137,14 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
 
             }
         });
+        String testImdb = prefs.get(0).getString(tempResult.getImdbID(),"0");
+        if(!testImdb.equals("0")){
+            prevPosition[position] = 1;
+        }
+        testImdb = prefs.get(1).getString(tempResult.getImdbID(),"0");
+        if(!testImdb.equals("0")){
+            prevPosition[position] = 2;
+        }
 
             viewHolder.statusSpinner.setSelection(prevPosition[position]);
 
