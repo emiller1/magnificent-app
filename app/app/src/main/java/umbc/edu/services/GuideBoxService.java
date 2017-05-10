@@ -72,6 +72,7 @@ public class GuideBoxService extends Service implements Serializable{
         return search_Result;
     }
 
+
     public List<Bitmap> getBrowseImages() {
         return artWorkList;
     }
@@ -204,7 +205,7 @@ public class GuideBoxService extends Service implements Serializable{
         }
     }
 
-    public class Result implements Serializable{
+    public static class Result implements Serializable{
         public Result(List<Result> result_list) {
             this.result_list = result_list;
         }
