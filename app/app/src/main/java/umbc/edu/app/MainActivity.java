@@ -31,9 +31,16 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphRequestAsyncTask;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,7 +55,7 @@ import umbc.edu.helpers.AppHelper;
 public class    MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     String TAG = "MainActivity";
-    String user, pass;
+    String user, pass, email;
 
     EditText username, password;
     Button login_button;
@@ -65,16 +72,30 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) findViewById(R.id.facebooklogin_button);
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+                final AccessToken accessToken = loginResult.getAccessToken();
+
+                GraphRequestAsyncTask request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject user, GraphResponse graphResponse) {
+                        email = user.optString("name");
+                        Log.d("EMAIL", user.toString());
+                        Intent intent_s = new Intent(MainActivity.this, HomeActivity.class);
+                        intent_s.putExtra("username",email);
+                        startActivity(intent_s);
+                    }
+                }).executeAsync();
+
                 Log.d("****YEA***",loginResult.toString());
                 Map<String, String> logins = new HashMap<String, String>();
                 logins.put("graph.facebook.com", AccessToken.getCurrentAccessToken().getToken());
                 credentialsProvider = new CognitoCachingCredentialsProvider(getBaseContext(), AppHelper.getPoolId(),
                         Regions.US_EAST_1);
                 credentialsProvider.setLogins(logins);
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
             }
 
             @Override
@@ -174,7 +195,9 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
             AppHelper.setCurrSession(cognitoUserSession);
             AppHelper.newDevice(cognitoDevice);
             //Go To Home Activity
-            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+            Intent intent_s = new Intent(MainActivity.this, HomeActivity.class);
+            intent_s.putExtra("username",user);
+            startActivity(intent_s);
         }
 
         @Override

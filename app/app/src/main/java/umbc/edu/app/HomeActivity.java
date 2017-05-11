@@ -35,6 +35,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -83,9 +84,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     List<String> drawerList = new ArrayList<String>();
     List<GuideBoxService.Result> searchList = new ArrayList<GuideBoxService.Result>();
     Spinner mySpinner;
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-   // private GuideBoxService guideBoxService;
-    //ArrayList<Show> shows = new ArrayList<Show>();
+    TextView d_username;
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +93,9 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //Set the view for this activity
         setContentView(R.layout.activity_home);
+
+        d_username = (TextView)findViewById(R.id.d_username);
+
 
         //create a toolbar for this activity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
@@ -246,6 +248,10 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onResume() {
         super.onResume();
 
+        Intent myIntent = getIntent();
+        String texts = myIntent.getStringExtra("username");
+         d_username.setText(texts);
+        Toast.makeText(this, texts, Toast.LENGTH_LONG).show();
 
         registerReceiver(bintentReceiver, browseIntentFilter);
         Log.d("tag", "onResume()");

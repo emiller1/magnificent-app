@@ -58,10 +58,12 @@ public class WatchingActivity extends HomeActivity {
         });
         SharedPreferences watchingSharedActivity = null;
         if(userShowValue.equals("0")){
-        watchingSharedActivity = getSharedPreferences("WATCHING",MODE_PRIVATE);
+            watchingSharedActivity = getSharedPreferences("WATCHING",MODE_PRIVATE);
+            setTitle("Watcha | Currently Watching");
         }
         else if(userShowValue.equals("1")){
             watchingSharedActivity = getSharedPreferences("COMPLETED",MODE_PRIVATE);
+            setTitle("Watcha | Completed Shows");
         }
 
         Map<String, ?> allEntries = watchingSharedActivity.getAll();

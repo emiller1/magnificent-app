@@ -21,13 +21,13 @@
 
         <activity android:name=".MainActivity">
 
-            <!--
+
                 <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
+
         </activity>
 
         <service
@@ -42,21 +42,13 @@
             android:exported="false" />
 
         <activity android:name=".CreateAccountActivity" />
-        <!--
-        <activity android:name=".HomeActivity">
-            <intent-filter>
+
+        <activity android:name=".HomeActivity" android:label="Watcha | Browsing All Titles">
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
-        <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".UserShowsActivity" />
         <activity android:name=".ShowDetailsActivity" />

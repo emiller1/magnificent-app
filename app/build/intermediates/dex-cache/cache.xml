@@ -12,21 +12,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9b7251d79acadc6fd5244c6e122cf3de958ed625">
+        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d60b2e84c485a7bca74de0fee12498242620008c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
         <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_351a96dc4960398ba178dd26c85caf1421c5bc72/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c2d5ca2f28db6c7bb013b8c2028525402e92dca5">
-        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d60b2e84c485a7bca74de0fee12498242620008c/classes.dex" />
     </item>
     <item
         is-multidex="true"

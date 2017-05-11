@@ -4,7 +4,7 @@
     <string-array name="spinner_list">
         <item>Add to</item>
         <item>Watching</item>
-        <item>Dropped</item>
+        <item>Completed</item>
     </string-array>
     <string-array name="navigation_drawerlist">
         <item>Currently Watching</item>

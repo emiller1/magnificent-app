@@ -58,14 +58,16 @@
         android:layout_gravity="right"
         android:orientation="vertical"
         android:background="@color/appBlueMain">
-        <ImageView
-            android:id="@+id/im_avatar"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:background="#ffffff"
-            android:layout_gravity="right"
-            />
+
+       <ImageView
+           android:id="@+id/im_avatar"
+           android:layout_width="300dp"
+           android:layout_height="200dp"
+           android:layout_gravity="right"
+           android:src="@drawable/profile_image"
+           android:background="@color/appBlueMain" />
        <TextView
+           android:id="@+id/d_username"
            android:layout_width="300dp"
            android:layout_height="wrap_content"
            android:textAlignment="center"
