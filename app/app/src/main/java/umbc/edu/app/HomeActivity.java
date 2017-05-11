@@ -91,9 +91,15 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.w(tag, "onCreate()");
+
+        //Set the view for this activity
         setContentView(R.layout.activity_home);
+
+        //create a toolbar for this activity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(myToolbar);
+
+
         myToolbar.setTitleTextColor(Color.rgb(255,189,111));
         Intent guideboxIntent = new Intent(this,GuideBoxService.class);
         myDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
