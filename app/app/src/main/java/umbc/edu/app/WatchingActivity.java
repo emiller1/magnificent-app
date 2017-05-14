@@ -29,7 +29,7 @@ import umbc.edu.services.GuideBoxService.Result;
 
 public class WatchingActivity extends HomeActivity {
     ArrayList<String> imdbIDList = new ArrayList<String>();
-    final private String api_key = "8c6513c863495b95018e7ba2aa2ce49360dc418f";
+    final private String api_key = "192205a26e9f5481c3560778303b7078ae2bb9a0";
     ArrayList<GuideBoxService.Result> final_watch_list = new ArrayList<Result>();
      ArrayList<Bitmap> artWorkList = new ArrayList<Bitmap>();
     ArrayList<String> descrList = new ArrayList<String>();
@@ -64,6 +64,12 @@ public class WatchingActivity extends HomeActivity {
         else if(userShowValue.equals("1")){
             watchingSharedActivity = getSharedPreferences("COMPLETED",MODE_PRIVATE);
             setTitle("Watcha | Completed Shows");
+        }        else if(userShowValue.equals("2")){
+            watchingSharedActivity = getSharedPreferences("OnHold",MODE_PRIVATE);
+            setTitle("Watcha | On Hold");
+        }        else if(userShowValue.equals("3")){
+            watchingSharedActivity = getSharedPreferences("PlanToWatch",MODE_PRIVATE);
+            setTitle("Watcha | Plan To Watch");
         }
 
         Map<String, ?> allEntries = watchingSharedActivity.getAll();
@@ -143,6 +149,8 @@ public class WatchingActivity extends HomeActivity {
             super.onPostExecute(s);
             prefs.add(getSharedPreferences("WATCHING",MODE_PRIVATE));
             prefs.add(getSharedPreferences("COMPLETED",MODE_PRIVATE));
+            prefs.add(getSharedPreferences("OnHold",MODE_PRIVATE));
+            prefs.add(getSharedPreferences("PlanToWatch",MODE_PRIVATE));
             watch_List_adapter = new browseListAdapter(final_watch_list,artWorkList,descrList,getApplicationContext(),prefs);
             watchListView.setAdapter(watch_List_adapter);
 

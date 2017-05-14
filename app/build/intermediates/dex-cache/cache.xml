@@ -3,48 +3,48 @@
 
     <item
         is-multidex="true"
-        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/libs/aws-android-sdk-cognitoidentityprovider-2.4.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="59baa97d590a731f3a29f18072f67f30173f2dc9">
-        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/2/aws-android-sdk-cognitoidentityprovider-2.4.1_0af009fd03e6a94358ab478649b56ffffc29b121/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="9b7251d79acadc6fd5244c6e122cf3de958ed625">
-        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d60b2e84c485a7bca74de0fee12498242620008c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_351a96dc4960398ba178dd26c85caf1421c5bc72/classes.dex" />
+        <dex dex="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_b1df8d4e50c94f664e8c79782aa2c24f74be4cbb\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/libs/aws-android-sdk-core-2.4.1.jar"
+        jar="D:\Projects\MCProject3\magnificent-app\app\app\libs\aws-android-sdk-core-2.4.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="352fe9602022d6a1235dcaa9aa0fdd5e0195d74d">
-        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/2/aws-android-sdk-core-2.4.1_866715b2b414640602797798a68413478743e601/classes.dex" />
+        <dex dex="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-core-2.4.1_e42f12c05204a1f3b17371fa56456c276a750b5a\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/milleej1/Desktop/app/magnificent-app/app/app/libs/aws-android-sdk-ddb-2.4.1.jar"
+        jar="D:\Projects\MCProject3\magnificent-app\app\app\libs\aws-android-sdk-cognitoidentityprovider-2.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="59baa97d590a731f3a29f18072f67f30173f2dc9">
+        <dex dex="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-cognitoidentityprovider-2.4.1_78ca30835d179d5f2ef4df35d98615e4d35a39ca\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Projects\MCProject3\magnificent-app\app\app\libs\aws-android-sdk-ddb-2.4.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="e71ce61ed5b00b2df6f221fc253fc84e0f5b0088">
-        <dex dex="/Users/milleej1/Desktop/app/magnificent-app/app/app/build/intermediates/transforms/dex/debug/folders/1000/2/aws-android-sdk-ddb-2.4.1_cc337e41f7cd29aebf38397d3931946964e8fe79/classes.dex" />
+        <dex dex="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\aws-android-sdk-ddb-2.4.1_6a699fc786194b3eb06dd462491c4474376ef1a9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="43c4d5ba61426cf36255c613efaf27278b97c709">
+        <dex dex="D:\Projects\MCProject3\magnificent-app\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_42abd041c490c870cfd78866f06ede7bc55a5aa9\classes.dex" />
     </item>
 
 </items>

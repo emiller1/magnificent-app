@@ -59,7 +59,7 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
         this.descriptionList = browseDescription;
         this.prefs = prefs;
     }
-    public View getView(final int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent){
 
         final GuideBoxService.Result tempResult  = getItem(position);
         ViewHolder viewHolder;
@@ -109,16 +109,61 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
                 //1 -> WATCHING
                 //2 -> COMPLETED
 
-                SharedPreferences.Editor editor;
+                SharedPreferences.Editor editor,editor1;
 
                 if(pos==1){
                     editor = prefs.get(0).edit();
                     editor.putString(tempResult.getImdbID(), tempResult.getImdbID());
                     editor.commit();
+                    editor1 = prefs.get(1).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(2).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(3).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
                 }else if(pos==2){
                     editor = prefs.get(1).edit();
                     editor.putString(tempResult.getImdbID(), tempResult.getImdbID());
                     editor.commit();
+                    editor1 = prefs.get(0).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(2).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(3).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                }else if(pos==3){
+                    editor = prefs.get(2).edit();
+                    editor.putString(tempResult.getImdbID(), tempResult.getImdbID());
+                    editor.commit();
+                    editor1 = prefs.get(1).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(0).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(3).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                }else if(pos==4){
+                    editor = prefs.get(3).edit();
+                    editor.putString(tempResult.getImdbID(), tempResult.getImdbID());
+                    editor.commit();
+                    editor1 = prefs.get(1).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(0).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+                    editor1 = prefs.get(2).edit();
+                    editor1.remove(tempResult.getImdbID());
+                    editor1.commit();
+
                 }
 
                 //TODO:
@@ -144,6 +189,14 @@ public class browseListAdapter extends ArrayAdapter<GuideBoxService.Result> {
         testImdb = prefs.get(1).getString(tempResult.getImdbID(),"0");
         if(!testImdb.equals("0")){
             prevPosition[position] = 2;
+        }
+        testImdb = prefs.get(2).getString(tempResult.getImdbID(),"0");
+        if(!testImdb.equals("0")){
+            prevPosition[position] = 3;
+        }
+        testImdb = prefs.get(3).getString(tempResult.getImdbID(),"0");
+        if(!testImdb.equals("0")){
+            prevPosition[position] = 4;
         }
 
             viewHolder.statusSpinner.setSelection(prevPosition[position]);
