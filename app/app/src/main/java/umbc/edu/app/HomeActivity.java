@@ -113,6 +113,8 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
        // drawerList.add("Log Out");
         drawerList.add("Watching");
         drawerList.add("Completed");
+        drawerList.add("On Hold");
+        drawerList.add("Plan to Watch");
         drawerListView.setAdapter(new ArrayAdapter<String>(this,R.layout.navigation_drawer_list,drawerList));
         drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,7 +133,14 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 else if(position ==2){
                     Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_LONG).show();
-                    //start appropriate activity
+                    Intent completedShowIntent = new Intent(getApplicationContext(),WatchingActivity.class);
+                    completedShowIntent.putExtra("UserShow","2");
+                    startActivity(completedShowIntent);
+                }else if(position ==3){
+                    Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_LONG).show();
+                    Intent completedShowIntent = new Intent(getApplicationContext(),WatchingActivity.class);
+                    completedShowIntent.putExtra("UserShow","3");
+                    startActivity(completedShowIntent);
                 }
             }
         });
@@ -156,6 +165,8 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
                     }
                     prefs.add(getSharedPreferences(WATCHING,MODE_PRIVATE));
                     prefs.add(getSharedPreferences(COMPLETED,MODE_PRIVATE));
+                    prefs.add(getSharedPreferences("OnHold",MODE_PRIVATE));
+                    prefs.add(getSharedPreferences("PlanToWatch",MODE_PRIVATE));
                     adapter = new browseListAdapter(browseList,browseImages,browseDescription,getApplicationContext(), prefs);
                     browserListView.setAdapter(adapter);
                     browserListView.setOnItemClickListener(HomeActivity.this);

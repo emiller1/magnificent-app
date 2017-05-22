@@ -5,6 +5,8 @@
         <item>Add to</item>
         <item>Watching</item>
         <item>Completed</item>
+        <item>On Hold</item>
+        <item>Plan to Watch</item>
     </string-array>
     <string-array name="navigation_drawerlist">
         <item>Currently Watching</item>

@@ -116,6 +116,8 @@ public class searchResults extends HomeActivity {
             searchDescription = (ArrayList<String>)myIntent.getStringArrayListExtra("description_list");
             prefs.add(getSharedPreferences("WATCHING",MODE_PRIVATE));
             prefs.add(getSharedPreferences("COMPLETED",MODE_PRIVATE));
+            prefs.add(getSharedPreferences("OnHold",MODE_PRIVATE));
+            prefs.add(getSharedPreferences("PlanToWatch",MODE_PRIVATE));
             search_adapter = new browseListAdapter(searchList,artWorkList,searchDescription,getApplicationContext(),prefs);
             searchListView.setAdapter(search_adapter);
              //  HomeActivity.content_layout.addView(searchListView);

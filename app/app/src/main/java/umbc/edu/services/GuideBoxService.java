@@ -42,7 +42,8 @@ import java.util.List;
 public class GuideBoxService extends Service implements Serializable{
 
     String TAG = "GuideBoxService";
-    final private String api_key = "8c6513c863495b95018e7ba2aa2ce49360dc418f";
+    //final private String api_key = "8c6513c863495b95018e7ba2aa2ce49360dc418f";
+    final private String api_key = "192205a26e9f5481c3560778303b7078ae2bb9a0";
   //  private ArrayList<Show> shows = new ArrayList<Show>();
     private ArrayList<String> showIds = new ArrayList<String>();
 
@@ -92,7 +93,7 @@ public class GuideBoxService extends Service implements Serializable{
                 try {
                     if((params[0] == "browse")|| (params[2] =="title")) {
                         if (params[0] == "browse") {
-                            url = new URL("http://api-public.guidebox.com/v2/shows?api_key=8c6513c863495b95018e7ba2aa2ce49360dc418f");
+                            url = new URL("http://api-public.guidebox.com/v2/shows?api_key=192205a26e9f5481c3560778303b7078ae2bb9a0");
                         } else if (params[2] == "title" ) {
 
                             String testURL = URLEncoder.encode(params[1],"UTF-8");
@@ -307,7 +308,10 @@ public class GuideBoxService extends Service implements Serializable{
         Log.d("in readResultAray", "hi");
         reader.beginArray();
         while (reader.hasNext()) {
-            result.add(readResult(reader));
+            Result tempResult = readResult(reader);
+            if(!tempResult.imdb_id.equals("")) {
+                result.add(tempResult);
+            }
         }
         reader.endArray();
         return result;
